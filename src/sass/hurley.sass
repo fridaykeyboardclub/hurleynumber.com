@@ -1,9 +1,29 @@
 
 #formula
-    display: inline-block
     font-size: 60px
     position: relative
-    bottom: 40px
+    bottom: 60px
+
+    div.formula-part
+        display: inline-block
+
+    #formula-head-part img
+        position: relative
+        top: 40px
+
+    #formula-fraction-part
+        position: relative
+        top: 50px
+        margin: 0 1ex 0 1ex
+
+        #formula-fraction-top
+            border-bottom: 1px solid black
+        #formula-fraction-bottom
+            width: 100%
+            text-align: center
+
+    #formula-result-part
+        margin: 0 1ex 0 1ex
 
 input[type="number"]
     width: 8em

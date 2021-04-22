@@ -36,7 +36,7 @@ setKeyboardGbs a model = { model | keyboardGbs = a }
 setUnmodifiedSwitchSets a model = { model | unmodifiedSwitchSets = a }
 setModifiedSwitchSets a model = { model | modifiedSwitchSets = a }
 setSwitchGbs a model = { model | switchGbs = a }
-setKeycapSets a model = { model | modifiedSwitchSets = a }
+setKeycapSets a model = { model | keycapSets = a }
 setKeycapGbs a model = { model | keycapGbs = a }
 setArtisans a model = { model | artisans = a }
 setArtisanGbs a model = { model | artisanGbs = a }
@@ -47,30 +47,60 @@ setCableGbs a model = { model | cableGbs = a }
 setAccessories a model = { model | accessories = a }
 setAccessoryGbs a model = { model | accessoryGbs = a }
 
-
 -- Calculate the Hurley number from user input
 
 calculate : HurleyInput -> String
 calculate input =
   let
-    orZero maybe = maybe |> withDefault 0 |> toFloat
-    k_i = input.keyboards |> orZero
-    g_k = input.keyboardGbs |> orZero
-    s_u = input.unmodifiedSwitchSets |> orZero
-    s_c = input.modifiedSwitchSets |> orZero
-    g_s = input.switchGbs |> orZero
-    c = input.keycapSets |> orZero
-    g_c = input.keycapGbs |> orZero
-    a = orZero input.artisans + orZero input.deskpads + orZero input.cables + orZero input.accessories
-    g_a = orZero input.artisanGbs + orZero input.deskpadGbs + orZero input.cableGbs + orZero input.accessoryGbs
+    keyboards = calculateK input |> withDefault 0
+    switches = calculateS input |> withDefault 0
+    keycaps = calculateC input |> withDefault 0
+    accessories = calculateA input |> withDefault 0
 
-    keyboards = k_i + g_k
-    switches = s_u + (1.5 * s_c) + g_s
-    keycaps = c + g_c
-    accessories = (a + g_a) / 4
-
-    -- TODO more caluclations
     calculated = (keyboards + switches + keycaps + accessories) / 3
   in
-    calculated |> Round.round 2
+    calculated |> Round.round 1
 
+calculateK input =
+  if input.keyboards == Nothing && input.keyboardGbs == Nothing then
+    Nothing
+  else
+    let
+      k_i = input.keyboards |> orZero
+      g_k = input.keyboardGbs |> orZero
+    in Just (k_i + g_k)
+
+calculateS input =
+  if input.unmodifiedSwitchSets == Nothing
+    && input.modifiedSwitchSets == Nothing
+    && input.switchGbs == Nothing then
+    Nothing
+  else
+    let
+      s_u = input.unmodifiedSwitchSets |> orZero
+      s_c = input.modifiedSwitchSets |> orZero
+      g_s = input.switchGbs |> orZero
+    in Just (s_u + (0.5 * s_c) + g_s)
+
+calculateC input =
+  if input.keycapSets == Nothing && input.keycapGbs == Nothing then
+    Nothing
+  else
+    let
+      c = input.keycapSets |> orZero
+      g_c = input.keycapGbs |> orZero
+    in Just (c + g_c)
+
+calculateA input =
+  if input.artisans == Nothing && input.artisanGbs == Nothing
+    && input.deskpads == Nothing && input.deskpadGbs == Nothing
+    && input.cables == Nothing && input.cableGbs == Nothing
+    && input.accessories == Nothing && input.accessoryGbs == Nothing then
+    Nothing
+  else
+    let
+      a = orZero input.artisans + orZero input.deskpads + orZero input.cables + orZero input.accessories
+      g_a = orZero input.artisanGbs + orZero input.deskpadGbs + orZero input.cableGbs + orZero input.accessoryGbs
+    in Just ((a + g_a) / 4)
+
+orZero maybe = maybe |> withDefault 0 |> toFloat

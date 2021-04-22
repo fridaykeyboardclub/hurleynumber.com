@@ -1,0 +1,31 @@
+#formula {
+  font-size: 60px;
+  position: relative;
+  bottom: 60px; }
+  #formula div.formula-part {
+    display: inline-block; }
+  #formula #formula-head-part img {
+    position: relative;
+    top: 40px; }
+  #formula #formula-fraction-part {
+    position: relative;
+    top: 50px;
+    margin: 0 1ex 0 1ex; }
+    #formula #formula-fraction-part #formula-fraction-top {
+      border-bottom: 1px solid black; }
+    #formula #formula-fraction-part #formula-fraction-bottom {
+      width: 100%;
+      text-align: center; }
+  #formula #formula-result-part {
+    margin: 0 1ex 0 1ex; }
+
+input[type="number"] {
+  width: 8em; }
+
+.inputtitle {
+  font-size: 30px; }
+
+div#input table {
+  width: 400px; }
+  div#input table tr.inputrow td:first-child {
+    width: 300px; }
