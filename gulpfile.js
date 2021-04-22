@@ -4,7 +4,7 @@ const sass = require("gulp-sass");
 const del  = require("del");
 
 const clean_dirs = [
-  "dist/",
+  "docs/",
   "elm-stuff/",
 ];
 
@@ -23,24 +23,24 @@ gulp.task("clean", () => {
 
 gulp.task("html", () => {
   return gulp.src("src/html/**")
-    .pipe(gulp.dest("dist/"));
+    .pipe(gulp.dest("docs/"));
 });
 
 gulp.task("elm", () => {
   return gulp.src("src/elm/Main.elm")
     .pipe(elm({ optimize: false }))
-    .pipe(gulp.dest("dist/js/"));
+    .pipe(gulp.dest("docs/js/"));
 });
 
 gulp.task("sass", () => {
   return gulp.src(sass_dirs)
     .pipe(sass())
-    .pipe(gulp.dest("dist/css/"));
+    .pipe(gulp.dest("docs/css/"));
 });
 
 gulp.task("css", () => {
   return gulp.src(css_dirs)
-    .pipe(gulp.dest("dist/css/"));
+    .pipe(gulp.dest("docs/css/"));
 });
 
 gulp.task("default",
