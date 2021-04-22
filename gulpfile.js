@@ -1,0 +1,56 @@
+const gulp = require("gulp");
+const elm  = require("gulp-elm");
+const sass = require("gulp-sass");
+const del  = require("del");
+
+const clean_dirs = [
+  "dist/",
+  "elm-stuff/",
+];
+
+const sass_dirs = [
+  "src/sass/**/*.sass",
+  "node_modules/bulma/bulma.sass"
+];
+
+const css_dirs = [
+  "node_modules/@creativebulma/bulma-tooltip/dist/bulma-tooltip.css"
+];
+
+gulp.task("clean", () => {
+  return del(clean_dirs);
+});
+
+gulp.task("html", () => {
+  return gulp.src("src/html/**")
+    .pipe(gulp.dest("dist/"));
+});
+
+gulp.task("elm", () => {
+  return gulp.src("src/elm/Main.elm")
+    .pipe(elm({ optimize: false }))
+    .pipe(gulp.dest("dist/js/"));
+});
+
+gulp.task("sass", () => {
+  return gulp.src(sass_dirs)
+    .pipe(sass())
+    .pipe(gulp.dest("dist/css/"));
+});
+
+gulp.task("css", () => {
+  return gulp.src(css_dirs)
+    .pipe(gulp.dest("dist/css/"));
+});
+
+gulp.task("default",
+  gulp.series(
+    "clean",
+    gulp.parallel(
+      "html",
+      "elm",
+      "sass",
+      "css",
+    )
+  )
+);
