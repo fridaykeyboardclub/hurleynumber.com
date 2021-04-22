@@ -1,10 +1,22 @@
 module Messages exposing (..)
 
-tooltip_keyboards = ""
-tooltip_keyboard_group_buys = ""
-tooltip_switches = ""
-tooltip_switch_group_buys = ""
+tooltip_keyboards = "Keyboard cases"
+tooltip_keyboard_gbs = "Open keyboard group buys"
+
+tooltip_unmodified_switches = ""
+tooltip_modified_switches = ""
+tooltip_switch_gbs = ""
+
 tooltip_keycaps = ""
-tooltip_keycap_group_buys = ""
+tooltip_keycap_gbs = ""
+
+tooltip_artisans = ""
+tooltip_artisan_gbs = ""
+tooltip_deskpads = ""
+tooltip_deskpad_gbs = ""
+tooltip_cables = ""
+tooltip_cable_gbs = ""
+tooltip_accessories = ""
+tooltip_accessory_gbs = ""
 
 -- TODO more tooltip messages

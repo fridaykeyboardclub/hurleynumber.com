@@ -1,7 +1,6 @@
 module View exposing (view)
 
-import Debug exposing (toString)
-import Html exposing (Html, div, i, img, input, label, span, text)
+import Html exposing (Html, div, h2, i, img, input, label, span, table, td, text, tr)
 import Html.Attributes exposing (attribute, class, id, src, type_)
 import Html.Events exposing (onInput)
 import Model exposing (..)
@@ -28,21 +27,52 @@ formula model =
 -- Html for user input fields
 inputFields : Html Event
 inputFields =
-  div [ class "container" ]
-    [ inputField "Keyboards" tooltip_keyboards setKeyboards
-    , inputField "Keyboard group buys" tooltip_keyboard_group_buys setKeyboardGbs
-    , inputField "Switch sets" tooltip_switches setSwitchSets
-    , inputField "Keycaps" tooltip_keycaps setKeycapSets
+  div [ class "container", id "input" ]
+    [ h2 [ class "inputtitle" ] [ text "Keyboards" ]
+    , table []
+      [ inputField "Keyboards" tooltip_keyboards setKeyboards
+      , inputField "Keyboard group buys" tooltip_keyboard_gbs setKeyboardGbs
+      ]
+    , h2 [ class "inputtitle" ] [ text "Switches" ]
+    , table []
+      [ inputField "Switch sets (unmodified)" tooltip_unmodified_switches setUnmodifiedSwitchSets
+      , inputField "Switch sets (modified)" tooltip_modified_switches setModifiedSwitchSets
+      , inputField "Switch group buys" tooltip_switch_gbs setSwitchGbs
+      ]
+    , h2 [ class "inputtitle" ] [ text "Keycaps" ]
+    , table []
+      [ inputField "Keycaps" tooltip_keycaps setKeycapSets
+      , inputField "Keycap group buys" tooltip_keycap_gbs setKeycapGbs
+      ]
+    , h2 [ class "inputtitle" ] [ text "Accessories" ]
+    , table []
+      [ inputField "Artisans" tooltip_artisans setArtisans
+      , inputField "Artisan group buys" tooltip_artisan_gbs setArtisanGbs
+      , inputField "Deskpads" tooltip_deskpads setDeskpads
+      , inputField "Deskpad group buys" tooltip_deskpad_gbs setDeskpadGbs
+      , inputField "Cables" tooltip_cables setCables
+      , inputField "Cable group buys" tooltip_cable_gbs setCableGbs
+      , inputField "Other accessories" tooltip_accessories setAccessories
+      , inputField "Other accessory group buys" tooltip_accessory_gbs setAccessoryGbs
+      ]
     ]
+
 
 inputField : String -> String -> (Maybe Int -> HurleyInput -> HurleyInput) -> Html Event
 inputField name tooltip updateField =
-  div []
-    [ label [ ]
-      [ span [ attribute "data-tooltip" tooltip] [ text name ]
+  let
+    tooltipList = if tooltip == "" then [] else [ attribute "data-tooltip" tooltip ]
+  in
+    tr [ class "inputrow" ]
+      [ td [] [
+          label [ ]
+            [ span tooltipList [ text name ]
+            ]
+          ]
+      , td []
+          [ input [ type_ "number", onInput (doInput updateField) ] []
+          ]
       ]
-    , input [ type_ "number", onInput (doInput updateField) ] []
-    ]
 
 doInput : (Maybe Int -> HurleyInput -> HurleyInput) -> String -> Event
 doInput updater str =

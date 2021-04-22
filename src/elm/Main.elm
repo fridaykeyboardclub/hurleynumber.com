@@ -16,8 +16,19 @@ init _ =
       { input =
         { keyboards = Nothing
         , keyboardGbs = Nothing
-        , switchSets = Nothing
+        , unmodifiedSwitchSets = Nothing
+        , modifiedSwitchSets = Nothing
+        , switchGbs = Nothing
         , keycapSets = Nothing
+        , keycapGbs = Nothing
+        , artisans = Nothing
+        , artisanGbs = Nothing
+        , deskpads = Nothing
+        , deskpadGbs = Nothing
+        , cables = Nothing
+        , cableGbs = Nothing
+        , accessories = Nothing
+        , accessoryGbs = Nothing
         }
       }
   in
