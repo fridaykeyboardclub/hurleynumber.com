@@ -55,4 +55,8 @@ div#input table {
     text-align: right; }
 
 .columns .column.is-half {
-  margin: auto; }
+  margin: auto;
+  max-width: 400px;
+  width: 100%; }
+  .columns .column.is-half tr.inputrow td:first-child {
+    width: 80%; }
