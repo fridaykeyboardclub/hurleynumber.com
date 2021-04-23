@@ -1,23 +1,44 @@
+body {
+  background: transparent url("../img/bg-dark.png") scroll no-repeat center center;
+  background-size: auto 100%;
+  color: #ff7bac;
+  min-height: 100vh; }
+
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem; }
+  header a {
+    display: block; }
+  header img {
+    height: 60px; }
+  header .avatar {
+    border-radius: 5px; }
+
 #formula {
-  font-size: 60px;
-  position: relative;
-  bottom: 60px; }
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 42px;
+  justify-content: center;
+  margin-bottom: 2rem; }
   #formula div.formula-part {
     display: inline-block; }
+  #formula #formula-head-part {
+    align-items: center;
+    display: flex;
+    justify-content: center; }
   #formula #formula-head-part img {
-    position: relative;
-    top: 40px; }
+    height: 64px;
+    width: 64px; }
   #formula #formula-fraction-part {
-    position: relative;
-    top: 50px;
-    margin: 0 1ex 0 1ex; }
+    margin: 0 1rem; }
     #formula #formula-fraction-part #formula-fraction-top {
-      border-bottom: 1px solid black; }
+      border-bottom: 2px solid #ff7bac; }
     #formula #formula-fraction-part #formula-fraction-bottom {
       width: 100%;
       text-align: center; }
-  #formula #formula-result-part {
-    margin: 0 1ex 0 1ex; }
 
 input[type="number"] {
   width: 8em; }
@@ -26,7 +47,16 @@ input[type="number"] {
   font-size: 30px; }
 
 div#input table {
-  width: 100%;
-  max-width: 400px; }
+  max-width: 400px;
+  width: 100%; }
   div#input table tr.inputrow td:first-child {
+    width: 300px; }
+  div#input table tr.inputrow td:last-child {
+    text-align: right; }
+
+.columns .column.is-half {
+  margin: auto;
+  max-width: 400px;
+  width: 100%; }
+  .columns .column.is-half tr.inputrow td:first-child {
     width: 80%; }

@@ -5586,6 +5586,7 @@ var $author$project$View$formulaNumber = F3(
 			$elm$html$Html$span,
 			_List_fromArray(
 				[
+					$elm$html$Html$Attributes$class('has-tooltip-multiline'),
 					A2($elm$html$Html$Attributes$attribute, 'data-tooltip', altText)
 				]),
 			_List_fromArray(
@@ -5756,7 +5757,8 @@ var $author$project$View$inputField = F3(
 	function (name, tooltip, updateField) {
 		var tooltipList = (tooltip === '') ? _List_Nil : _List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$attribute, 'data-tooltip', tooltip)
+				A2($elm$html$Html$Attributes$attribute, 'data-tooltip', tooltip),
+				$elm$html$Html$Attributes$class('has-tooltip-multiline')
 			]);
 		return A2(
 			$elm$html$Html$tr,

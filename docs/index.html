@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bulma.css" />
-    <link rel="stylesheet" href="css/bulma-tooltip.css" />
-    <link rel="stylesheet" href="css/hurley.css" />
-    <script src="js/Main.js"></script>
-</head>
-<body>
-    <section class="section">
-        <div id="main"></div>
-        <script>
-            Elm.Main.init({
-                node: document.getElementById("main")
-            });
-        </script>
-    </section>
-</body>
-
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/bulma.css" />
+        <link rel="stylesheet" href="css/bulma-tooltip.css" />
+        <link rel="stylesheet" href="css/hurley.css" />
+        <script src="js/Main.js"></script>
+    </head>
+    <body>
+        <section class="section">
+            <header>
+                <a
+                    href="https://twitter.com/imyke"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <img
+                        src="img/twitch-head.png"
+                        class="avatar"
+                        alt="Myke's Twitch avatar"
+                    />
+                </a>
+                <a href="http://myke.live" target="_blank" rel="noopener">
+                    <img
+                        src="img/myke-live.png"
+                        class="logo"
+                        alt="myke.live logo"
+                    />
+                </a>
+            </header>
+            <div id="main"></div>
+            <script>
+                Elm.Main.init({
+                    node: document.getElementById("main"),
+                });
+            </script>
+        </section>
+    </body>
 </html>

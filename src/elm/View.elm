@@ -49,7 +49,7 @@ formulaNumber name altText maybeNumber =
       case maybeNumber of
         Just number ->  text (toString number)
         Nothing -> text name
-  in span [ attribute "data-tooltip" altText ] [ content ]
+  in span [ class "has-tooltip-multiline", attribute "data-tooltip" altText ] [ content ]
 
 -- Html for user input fields
 inputFields : Html Event
@@ -96,7 +96,7 @@ inputFields =
 inputField : String -> String -> (Maybe Int -> HurleyInput -> HurleyInput) -> Html Event
 inputField name tooltip updateField =
   let
-    tooltipList = if tooltip == "" then [] else [ attribute "data-tooltip" tooltip ]
+    tooltipList = if tooltip == "" then [] else [ attribute "data-tooltip" tooltip, class "has-tooltip-multiline" ]
   in
     tr [ class "inputrow" ]
       [ td [] [
