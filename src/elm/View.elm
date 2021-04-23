@@ -1,11 +1,11 @@
 module View exposing (view)
 
-import Debug exposing (toString)
 import Html exposing (Html, div, h2, i, img, input, label, span, table, td, text, tr)
 import Html.Attributes exposing (attribute, class, id, src, type_)
 import Html.Events exposing (onInput)
 import Model exposing (..)
 import Messages exposing (..)
+import String exposing (fromFloat)
 
 view : Model -> Html Event
 view model =
@@ -47,7 +47,7 @@ formulaNumber name altText maybeNumber =
   let
     content =
       case maybeNumber of
-        Just number ->  text (toString number)
+        Just number ->  text (fromFloat number)
         Nothing -> text name
   in span [ class "has-tooltip-multiline", attribute "data-tooltip" altText ] [ content ]
 

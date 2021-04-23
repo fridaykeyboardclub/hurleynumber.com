@@ -14,7 +14,12 @@ const sass_dirs = [
 ];
 
 const css_dirs = [
-  "node_modules/@creativebulma/bulma-tooltip/dist/bulma-tooltip.css"
+  "node_modules/@creativebulma/bulma-tooltip/dist/bulma-tooltip.css",
+  "node_modules/@creativebulma/bulma-collapsible/dist/css/bulma-collapsible.min.css"
+];
+
+const js_dirs = [
+  "node_modules/@creativebulma/bulma-collapsible/dist/js/bulma-collapsible.min.js"
 ];
 
 gulp.task("clean", () => {
@@ -28,7 +33,12 @@ gulp.task("html", () => {
 
 gulp.task("elm", () => {
   return gulp.src("src/elm/Main.elm")
-    .pipe(elm({ optimize: false }))
+    .pipe(elm({ optimize: true }))
+    .pipe(gulp.dest("docs/js/"));
+});
+
+gulp.task("js", () => {
+  return gulp.src(js_dirs)
     .pipe(gulp.dest("docs/js/"));
 });
 
@@ -51,6 +61,7 @@ gulp.task("default",
       "elm",
       "sass",
       "css",
+      "js",
     )
   )
 );

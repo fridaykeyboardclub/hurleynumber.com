@@ -60,3 +60,18 @@ div#input table {
   width: 100%; }
   .columns .column.is-half tr.inputrow td:first-child {
     width: 80%; }
+
+.columns div.column {
+  align: center; }
+
+.explain {
+  text-align: center;
+  width: 60%;
+  margin-top: 50px; }
+
+#definitions {
+  margin-top: 50px; }
+
+dt {
+  font-weight: bold;
+  margin-top: 1em; }
