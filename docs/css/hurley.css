@@ -1,6 +1,7 @@
 body {
   background: transparent url("../img/bg-dark.png") scroll no-repeat center center;
   background-size: auto 100%;
+  background-attachment: fixed;
   color: #ff7bac;
   min-height: 100vh; }
 
