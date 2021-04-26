@@ -54,40 +54,44 @@ formulaNumber name altText maybeNumber =
 -- Html for user input fields
 inputFields : Html Event
 inputFields =
-  div [ class "columns is-desktop is-multiline", id "input" ]
-    [ div [ class "column is-half" ]
-      [ h2 [ class "inputtitle" ] [ text "K: Keyboards" ]
-      , table []
-        [ inputField "Keyboards" tooltip_keyboards setKeyboards
-        , inputField "Keyboard group buys" tooltip_keyboard_gbs setKeyboardGbs
+  div []
+    [ div [ class "columns is-desktop is-multiline input-group" ]
+      [ div [ class "column is-half" ]
+        [ h2 [ class "inputtitle" ] [ text "K: Keyboards" ]
+        , table []
+          [ inputField "Keyboards" tooltip_keyboards setKeyboards
+          , inputField "Keyboard group buys" tooltip_keyboard_gbs setKeyboardGbs
+          ]
+        ]
+      , div [ class "column is-half" ]
+        [ h2 [ class "inputtitle" ] [ text "S: Switches" ]
+        , table []
+          [ inputField "Switch sets (unmodified)" tooltip_unmodified_switches setUnmodifiedSwitchSets
+          , inputField "Switch sets (modified)" tooltip_modified_switches setModifiedSwitchSets
+          , inputField "Switch group buys" tooltip_switch_gbs setSwitchGbs
+          ]
         ]
       ]
-    , div [ class "column is-half" ]
-      [ h2 [ class "inputtitle" ] [ text "S: Switches" ]
-      , table []
-        [ inputField "Switch sets (unmodified)" tooltip_unmodified_switches setUnmodifiedSwitchSets
-        , inputField "Switch sets (modified)" tooltip_modified_switches setModifiedSwitchSets
-        , inputField "Switch group buys" tooltip_switch_gbs setSwitchGbs
+    , div [ class "columns is-desktop is-multiline input-group" ]
+      [ div [ class "column is-half" ]
+        [ h2 [ class "inputtitle" ] [ text "C: Keycaps" ]
+        , table []
+          [ inputField "Keycaps" tooltip_keycaps setKeycapSets
+          , inputField "Keycap group buys" tooltip_keycap_gbs setKeycapGbs
+          ]
         ]
-      ]
-    , div [ class "column is-half" ]
-      [ h2 [ class "inputtitle" ] [ text "C: Keycaps" ]
-      , table []
-        [ inputField "Keycaps" tooltip_keycaps setKeycapSets
-        , inputField "Keycap group buys" tooltip_keycap_gbs setKeycapGbs
-        ]
-      ]
-    , div [ class "column is-half" ]
-      [ h2 [ class "inputtitle" ] [ text "A: Accessories / 4" ]
-      , table []
-        [ inputField "Artisans" tooltip_artisans setArtisans
-        , inputField "Artisan group buys" tooltip_artisan_gbs setArtisanGbs
-        , inputField "Deskpads" tooltip_deskpads setDeskpads
-        , inputField "Deskpad group buys" tooltip_deskpad_gbs setDeskpadGbs
-        , inputField "Cables" tooltip_cables setCables
-        , inputField "Cable group buys" tooltip_cable_gbs setCableGbs
-        , inputField "Other accessories" tooltip_accessories setAccessories
-        , inputField "Other accessory group buys" tooltip_accessory_gbs setAccessoryGbs
+      , div [ class "column is-half" ]
+        [ h2 [ class "inputtitle" ] [ text "A: Accessories / 4" ]
+        , table []
+          [ inputField "Artisans" tooltip_artisans setArtisans
+          , inputField "Artisan group buys" tooltip_artisan_gbs setArtisanGbs
+          , inputField "Deskpads" tooltip_deskpads setDeskpads
+          , inputField "Deskpad group buys" tooltip_deskpad_gbs setDeskpadGbs
+          , inputField "Cables" tooltip_cables setCables
+          , inputField "Cable group buys" tooltip_cable_gbs setCableGbs
+          , inputField "Other accessories" tooltip_accessories setAccessories
+          , inputField "Other accessory group buys" tooltip_accessory_gbs setAccessoryGbs
+          ]
         ]
       ]
     ]

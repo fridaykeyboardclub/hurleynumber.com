@@ -1,5 +1,5 @@
 body {
-  background: transparent url("../img/bg-dark.png") scroll no-repeat center center;
+  background: #120a0d url("../img/bg-dark.png") scroll no-repeat center center;
   background-size: auto 100%;
   background-attachment: fixed;
   color: #ff7bac;
@@ -47,12 +47,12 @@ input[type="number"] {
 .inputtitle {
   font-size: 30px; }
 
-div#input table {
+div.input-group table {
   max-width: 400px;
   width: 100%; }
-  div#input table tr.inputrow td:first-child {
+  div.input-group table tr.inputrow td:first-child {
     width: 300px; }
-  div#input table tr.inputrow td:last-child {
+  div.input-group table tr.inputrow td:last-child {
     text-align: right; }
 
 .columns .column.is-half {
@@ -67,7 +67,6 @@ div#input table {
 
 .explain {
   text-align: center;
-  width: 60%;
   margin-top: 50px; }
 
 #definitions {

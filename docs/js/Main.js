@@ -5888,126 +5888,140 @@ var $author$project$Messages$tooltip_switch_gbs = 'Total number of sets of switc
 var $author$project$Messages$tooltip_unmodified_switches = 'Total number of stock switch sets that you own. A set of switches sufficient to fill a normal-sized board. Duplicate sets are counted if they were purchased separately or are used/intended to be used on separate boards.';
 var $author$project$View$inputFields = A2(
 	$elm$html$Html$div,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('columns is-desktop is-multiline'),
-			$elm$html$Html$Attributes$id('input')
-		]),
+	_List_Nil,
 	_List_fromArray(
 		[
 			A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('column is-half')
+					$elm$html$Html$Attributes$class('columns is-desktop is-multiline input-group')
 				]),
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$h2,
+					$elm$html$Html$div,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('inputtitle')
+							$elm$html$Html$Attributes$class('column is-half')
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text('K: Keyboards')
+							A2(
+							$elm$html$Html$h2,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('inputtitle')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text('K: Keyboards')
+								])),
+							A2(
+							$elm$html$Html$table,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A3($author$project$View$inputField, 'Keyboards', $author$project$Messages$tooltip_keyboards, $author$project$Model$setKeyboards),
+									A3($author$project$View$inputField, 'Keyboard group buys', $author$project$Messages$tooltip_keyboard_gbs, $author$project$Model$setKeyboardGbs)
+								]))
 						])),
 					A2(
-					$elm$html$Html$table,
-					_List_Nil,
+					$elm$html$Html$div,
 					_List_fromArray(
 						[
-							A3($author$project$View$inputField, 'Keyboards', $author$project$Messages$tooltip_keyboards, $author$project$Model$setKeyboards),
-							A3($author$project$View$inputField, 'Keyboard group buys', $author$project$Messages$tooltip_keyboard_gbs, $author$project$Model$setKeyboardGbs)
+							$elm$html$Html$Attributes$class('column is-half')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$h2,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('inputtitle')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text('S: Switches')
+								])),
+							A2(
+							$elm$html$Html$table,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A3($author$project$View$inputField, 'Switch sets (unmodified)', $author$project$Messages$tooltip_unmodified_switches, $author$project$Model$setUnmodifiedSwitchSets),
+									A3($author$project$View$inputField, 'Switch sets (modified)', $author$project$Messages$tooltip_modified_switches, $author$project$Model$setModifiedSwitchSets),
+									A3($author$project$View$inputField, 'Switch group buys', $author$project$Messages$tooltip_switch_gbs, $author$project$Model$setSwitchGbs)
+								]))
 						]))
 				])),
 			A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('column is-half')
+					$elm$html$Html$Attributes$class('columns is-desktop is-multiline input-group')
 				]),
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$h2,
+					$elm$html$Html$div,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('inputtitle')
+							$elm$html$Html$Attributes$class('column is-half')
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text('S: Switches')
+							A2(
+							$elm$html$Html$h2,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('inputtitle')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text('C: Keycaps')
+								])),
+							A2(
+							$elm$html$Html$table,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A3($author$project$View$inputField, 'Keycaps', $author$project$Messages$tooltip_keycaps, $author$project$Model$setKeycapSets),
+									A3($author$project$View$inputField, 'Keycap group buys', $author$project$Messages$tooltip_keycap_gbs, $author$project$Model$setKeycapGbs)
+								]))
 						])),
 					A2(
-					$elm$html$Html$table,
-					_List_Nil,
+					$elm$html$Html$div,
 					_List_fromArray(
 						[
-							A3($author$project$View$inputField, 'Switch sets (unmodified)', $author$project$Messages$tooltip_unmodified_switches, $author$project$Model$setUnmodifiedSwitchSets),
-							A3($author$project$View$inputField, 'Switch sets (modified)', $author$project$Messages$tooltip_modified_switches, $author$project$Model$setModifiedSwitchSets),
-							A3($author$project$View$inputField, 'Switch group buys', $author$project$Messages$tooltip_switch_gbs, $author$project$Model$setSwitchGbs)
-						]))
-				])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('column is-half')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h2,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('inputtitle')
+							$elm$html$Html$Attributes$class('column is-half')
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text('C: Keycaps')
-						])),
-					A2(
-					$elm$html$Html$table,
-					_List_Nil,
-					_List_fromArray(
-						[
-							A3($author$project$View$inputField, 'Keycaps', $author$project$Messages$tooltip_keycaps, $author$project$Model$setKeycapSets),
-							A3($author$project$View$inputField, 'Keycap group buys', $author$project$Messages$tooltip_keycap_gbs, $author$project$Model$setKeycapGbs)
-						]))
-				])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('column is-half')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h2,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('inputtitle')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('A: Accessories / 4')
-						])),
-					A2(
-					$elm$html$Html$table,
-					_List_Nil,
-					_List_fromArray(
-						[
-							A3($author$project$View$inputField, 'Artisans', $author$project$Messages$tooltip_artisans, $author$project$Model$setArtisans),
-							A3($author$project$View$inputField, 'Artisan group buys', $author$project$Messages$tooltip_artisan_gbs, $author$project$Model$setArtisanGbs),
-							A3($author$project$View$inputField, 'Deskpads', $author$project$Messages$tooltip_deskpads, $author$project$Model$setDeskpads),
-							A3($author$project$View$inputField, 'Deskpad group buys', $author$project$Messages$tooltip_deskpad_gbs, $author$project$Model$setDeskpadGbs),
-							A3($author$project$View$inputField, 'Cables', $author$project$Messages$tooltip_cables, $author$project$Model$setCables),
-							A3($author$project$View$inputField, 'Cable group buys', $author$project$Messages$tooltip_cable_gbs, $author$project$Model$setCableGbs),
-							A3($author$project$View$inputField, 'Other accessories', $author$project$Messages$tooltip_accessories, $author$project$Model$setAccessories),
-							A3($author$project$View$inputField, 'Other accessory group buys', $author$project$Messages$tooltip_accessory_gbs, $author$project$Model$setAccessoryGbs)
+							A2(
+							$elm$html$Html$h2,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('inputtitle')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text('A: Accessories / 4')
+								])),
+							A2(
+							$elm$html$Html$table,
+							_List_Nil,
+							_List_fromArray(
+								[
+									A3($author$project$View$inputField, 'Artisans', $author$project$Messages$tooltip_artisans, $author$project$Model$setArtisans),
+									A3($author$project$View$inputField, 'Artisan group buys', $author$project$Messages$tooltip_artisan_gbs, $author$project$Model$setArtisanGbs),
+									A3($author$project$View$inputField, 'Deskpads', $author$project$Messages$tooltip_deskpads, $author$project$Model$setDeskpads),
+									A3($author$project$View$inputField, 'Deskpad group buys', $author$project$Messages$tooltip_deskpad_gbs, $author$project$Model$setDeskpadGbs),
+									A3($author$project$View$inputField, 'Cables', $author$project$Messages$tooltip_cables, $author$project$Model$setCables),
+									A3($author$project$View$inputField, 'Cable group buys', $author$project$Messages$tooltip_cable_gbs, $author$project$Model$setCableGbs),
+									A3($author$project$View$inputField, 'Other accessories', $author$project$Messages$tooltip_accessories, $author$project$Model$setAccessories),
+									A3($author$project$View$inputField, 'Other accessory group buys', $author$project$Messages$tooltip_accessory_gbs, $author$project$Model$setAccessoryGbs)
+								]))
 						]))
 				]))
 		]));
