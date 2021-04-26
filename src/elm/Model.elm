@@ -80,7 +80,7 @@ calculateS input =
       s_u = input.unmodifiedSwitchSets |> orZero
       s_c = input.modifiedSwitchSets |> orZero
       g_s = input.switchGbs |> orZero
-    in Just (s_u + (0.5 * s_c) + g_s)
+    in Just (s_u + (1.5 * s_c) + g_s)
 
 calculateC input =
   if input.keycapSets == Nothing && input.keycapGbs == Nothing then

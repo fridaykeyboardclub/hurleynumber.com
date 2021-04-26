@@ -5255,7 +5255,7 @@ var $author$project$Model$calculateS = function (input) {
 		var s_u = $author$project$Model$orZero(input.aQ);
 		var s_c = $author$project$Model$orZero(input.aH);
 		var g_s = $author$project$Model$orZero(input.aO);
-		return $elm$core$Maybe$Just((s_u + (0.5 * s_c)) + g_s);
+		return $elm$core$Maybe$Just((s_u + (1.5 * s_c)) + g_s);
 	}
 };
 var $elm$core$Basics$ge = _Utils_ge;
