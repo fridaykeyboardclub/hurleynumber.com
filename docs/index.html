@@ -53,8 +53,6 @@
                     </div>
                     <div id="collapsible-definitions" class="message-body is-collapsible">
                         <div class="message-body-content">
-                            <p>What goes in those boxes, anyway?</p>
-
                             <dl>
                                 <dt>Keyboards</dt>
                                 <dd>The total number of keyboards you own. A keyboard is a PCB and whatever it is
@@ -63,26 +61,25 @@
                                     switches and keycaps are not counted in their respective categories.</dd>
 
                                 <dt>Unmodified Switch  Sets</dt>
-                                <dd>The total number of stock switch sets that you own. A set of switches sufficient
-                                    to fill a normal-sized board. Duplicate sets are counted if they were purchased
-                                    separately or are used/intended to be used on separate boards.</dd>
+                                <dd>The total number of stock switch sets that you own. A set of switches must be
+                                    sufficient to fill a board (excluding macropads and number pads) to count.
+                                    Duplicate sets are counted if they were purchased separately or are used/intended
+                                    to be used on separate boards.</dd>
 
                                 <dt>Modified Switch Sets</dt>
                                 <dd>The total number of customized sets of switches that have been modified by you.
                                     Modified switch sets include those that you have lubed, filmed, or made other
-                                    similar modifications to. Clipping switch pins does not count as a modification.
-                                    If you make Frankenswitches (where you take components from one set of switches
-                                    and use them to replace the components of another set of switches) both sets are
-                                    considered modified if both sets have been reassembled. Each set of modified
-                                    switches is counted as a single set regardless of the number of modifications
-                                    made.</dd>
+                                    similar modifications to. Clipping switch pins does not count as a modification. If
+                                    you make Frankenswitches (where you take components from one set of switches and use
+                                    them to replace the components of another set of switches) both sets are considered
+                                    modified if both sets have been reassembled. Each set of modified switches is
+                                    counted as a single set regardless of the number of modifications made.</dd>
 
                                 <dt>Keycaps</dt>
-                                <dd>The total number of keycaps sets you own. If you have multiple kits for the same
-                                    set they are all counted as one set unless they can be used to fully kit multiple
-                                    boards in which case they are counted as a number of sets equal to the number of
-                                    boards they can fully kit simultaneously. Artisan Keycaps are counted as
-                                    Accessories.</dd>
+                                <dd>The total number of keycaps sets you own. If you have multiple kits for the same set
+                                    they are all counted as one set unless they can be used to fully kit multiple boards
+                                    in which case they are counted as a number of sets equal to the number of boards
+                                    they can fully kit simultaneously. Artisan Keycaps are counted as Accessories.</dd>
 
                                 <dt>Artisans</dt>
                                 <dd>The total number of artisan keycaps you own. This does not include novelties.</dd>
@@ -94,18 +91,81 @@
                                 <dd>The total number of 'fancy' cables you own.</dd>
 
                                 <dt>Other Accessories</dt>
-                                <dd>The total number of other keyboard accessories you own such as stand-alone or
-                                    spare PCBs, alternate plates, switch testers, etc.</dd>
+                                <dd>The total number of other keyboard accessories you own such as stand-alone or spare
+                                    PCBs, alternate plates, switch testers, etc.</dd>
 
                                 <dt><i>X</i> Group Buys</dt>
                                 <dd>The total number of orders, pre-orders, group buys, etc. of the relevant item that
                                     you currently have placed but have not yet received.</dd>
 
-                                <dt>I prefer to do math by hand, what's the formula?</dt>
-                                <dd>Masochist.<br /><img src="img/formula.jpg"></dd>
+                            </dl>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div id="faq" class="container">
+                <article class="message">
+                    <div class="message-header">
+                        <a href="#collapsible-faq" data-action="collapse">FAQ</a>
+                    </div>
+                    <div id="collapsible-faq" class="message-body is-collapsible">
+                        <div class="message-body-content">
+                            <dl>
+                                <dt>What... what is this?</dt>
+                                <dd>The Hurley Score is a formula created by members of the #keyboards channel of the
+                                    Relay.fm members' discord. It's intended to be a standardized measure of the size of
+                                    your  keyboard collection and how far down the keyboard rabbit hole you've gone.
+                                </dd>
 
-                                <dt>What is Myke's Hurley Number?</dt>
-                                <dd>As of 2021-04-26T15:10:00Z, Myke's Hurley number is 21.1</dd>
+                                <dt>What about "non-mechanical" keyboards?</dt>
+                                <dd>Follow your heart. Some members of the community count them, others do not. If you
+                                    do count them each board counts as 1 keyboard, 1 unmodified switch set, and 1 keycap
+                                    set.</dd>
+
+                                <dt>What about tools and suplies (like brushes, lube, silicon, foam, etc.)?</dt>
+                                <dd>We, your humble Keyboard Sherpas, don't generally count these kinds of things. But
+                                    follow your heart.</dd>
+
+                                <dt>Why is the count divided by 3?</dt>
+                                <dd>There are a few reasons: 1) it makes the resulting score more manageable. 2) It
+                                    makes the outcome more intuitive. A complete keyboard (board + switches + keycaps)
+                                    gets a score of 1.</dd>
+
+                                <dt>Why is this a thing?</dt>
+                                <dd>Because keyboards are cool! Next question.</dd>
+
+                                <dt>How do I stop?</dt>
+                                <dd>If we figure it out, we'll let you know. In the meantime join our support/enablers
+                                    group at Relay.fm/membership.</dd>
+
+                                <dt>What is Myke's Hurley Score?</dt>
+                                <dd>As of 2021-04-26T15:10:00Z, Myke's Hurley Score is 21.1</dd>
+
+                                <dt>What is the ratio of the Hurley Constant to The Hackett?</dt>
+                                <dd>As of 2021-04-26T15:10:00Z, the ratio of Myke's Hurley Score to the Hackett
+                                    Constant is 1.02:1. The Hurley Constant has not yet been established.</dd>
+
+                                <dt>I prefer to do math by hand, what's the formula?</dt>
+                                <dd>Masochist.</dd>
+                                <img src="https://i.imgur.com/Nf2M8Xk.jpeg">
+                                <!--
+                                K = k + g_k \\
+                                S = s_u + 1.5s_c + g_s \\
+                                C =  c +g_c \\
+                                A = \frac{\left( a + g_a \right)}{4} \\
+
+                                H = \frac{K+S+C+A}{3}\\
+
+                                k = \text{Keyboards}\\
+                                g_k = \text{Keyboard Group Buys} \\
+                                s_u = \text{Unmodified Switch Sets} \\
+                                s_c = \text{Modified Switch Sets} \\
+                                g_s = \text{Switch Set Group Buys} \\
+                                c = \text{Keycap Sets} \\
+                                g_c = \text{Keycap Set Group Buys} \\
+                                a = \text{Accessories} \\
+                                g_a = \text{Accessory Group Buys}\\
+                                -->
                             </dl>
                         </div>
                     </div>
@@ -118,5 +178,8 @@
                 </p>
             </div>
         </section>
+        <script>
+            bulmaCollapsible.attach();
+        </script>
     </body>
 </html>

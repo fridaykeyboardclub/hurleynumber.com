@@ -73,5 +73,10 @@ div#input table {
   margin-top: 50px; }
 
 dt {
-  font-weight: bold;
+  font-weight: bold; }
+
+dt:not(:first-child) {
+  margin-top: 1em; }
+
+#faq {
   margin-top: 1em; }
