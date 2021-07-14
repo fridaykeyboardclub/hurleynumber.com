@@ -10,6 +10,8 @@ type alias Model =
 type alias HurleyInput =
   { keyboards : Maybe Int
   , keyboardGbs : Maybe Int
+  , macropads : Maybe Int
+  , macropadGbs : Maybe Int
   , unmodifiedSwitchSets : Maybe Int
   , modifiedSwitchSets : Maybe Int
   , switchGbs : Maybe Int
@@ -33,6 +35,8 @@ type Event
 
 setKeyboards a model = { model | keyboards = a }
 setKeyboardGbs a model = { model | keyboardGbs = a }
+setMacropads a model = { model | macropads = a }
+setMacropadGbs a model = { model | macropadGbs = a }
 setUnmodifiedSwitchSets a model = { model | unmodifiedSwitchSets = a }
 setModifiedSwitchSets a model = { model | modifiedSwitchSets = a }
 setSwitchGbs a model = { model | switchGbs = a }
@@ -62,13 +66,16 @@ calculate input =
     calculated |> Round.round 1
 
 calculateK input =
-  if input.keyboards == Nothing && input.keyboardGbs == Nothing then
+  if input.keyboards == Nothing && input.keyboardGbs == Nothing
+    && input.macropads == Nothing && input.macropadGbs == Nothing then
     Nothing
   else
     let
       k_i = input.keyboards |> orZero
       g_k = input.keyboardGbs |> orZero
-    in Just (k_i + g_k)
+      k_m = input.macropads |> orZero
+      g_m = input.macropadGbs |> orZero
+    in Just (k_i + g_k + k_m + g_m)
 
 calculateS input =
   if input.unmodifiedSwitchSets == Nothing
