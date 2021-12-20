@@ -12,6 +12,7 @@ type alias HurleyInput =
   , keyboardGbs : Maybe Int
   , macropads : Maybe Int
   , macropadGbs : Maybe Int
+  , designed : Maybe Int
   , switchSets : Maybe Int
   , modifiedSwitchSets : Maybe Int
   , switchGbs : Maybe Int
@@ -39,6 +40,7 @@ setKeyboards a model = { model | keyboards = a }
 setKeyboardGbs a model = { model | keyboardGbs = a }
 setMacropads a model = { model | macropads = a }
 setMacropadGbs a model = { model | macropadGbs = a }
+setDesigned a model = { model | designed = a }
 setSwitchSets a model = { model | switchSets = a }
 setModifiedSwitchSets a model = { model | modifiedSwitchSets = a }
 setSwitchGbs a model = { model | switchGbs = a }
@@ -79,7 +81,8 @@ calculateK input =
       g_k = input.keyboardGbs |> orZero
       k_m = input.macropads |> orZero
       g_m = input.macropadGbs |> orZero
-    in Just (k_i + g_k + k_m + g_m)
+      k_d = input.designed |> orZero
+    in Just (k_i + g_k + k_m + g_m + (k_d / 2))
 
 calculateS input =
   if input.switchSets == Nothing

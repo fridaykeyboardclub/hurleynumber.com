@@ -18,6 +18,7 @@ init _ =
         , keyboardGbs = Nothing
         , macropads = Nothing
         , macropadGbs = Nothing
+        , designed = Nothing
         , switchSets = Nothing
         , modifiedSwitchSets = Nothing
         , switchGbs = Nothing

@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aC,
-		impl.aV,
-		impl.aR,
+		impl.aD,
+		impl.aW,
+		impl.aS,
 		function() { return function() {} }
 	);
 });
@@ -3928,11 +3928,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aC,
-		impl.aV,
-		impl.aR,
+		impl.aD,
+		impl.aW,
+		impl.aS,
 		function(sendToApp, initialModel) {
-			var view = impl.aW;
+			var view = impl.aX;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3964,12 +3964,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aC,
-		impl.aV,
-		impl.aR,
+		impl.aD,
+		impl.aW,
+		impl.aS,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.I && impl.I(sendToApp)
-			var view = impl.aW;
+			var view = impl.aX;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3982,7 +3982,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aU) && (_VirtualDom_doc.title = title = doc.aU);
+				(title !== doc.aV) && (_VirtualDom_doc.title = title = doc.aV);
 			});
 		}
 	);
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aN;
-	var onUrlRequest = impl.aO;
+	var onUrlChange = impl.aO;
+	var onUrlRequest = impl.aP;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aC: function(flags)
+		aD: function(flags)
 		{
-			return A3(impl.aC, flags, _Browser_getUrl(), key);
+			return A3(impl.aD, flags, _Browser_getUrl(), key);
 		},
+		aX: impl.aX,
 		aW: impl.aW,
-		aV: impl.aV,
-		aR: impl.aR
+		aS: impl.aS
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aA: 'hidden', au: 'visibilitychange' }
+		? { aB: 'hidden', au: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aA: 'mozHidden', au: 'mozvisibilitychange' }
+		? { aB: 'mozHidden', au: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aA: 'msHidden', au: 'msvisibilitychange' }
+		? { aB: 'msHidden', au: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aA: 'webkitHidden', au: 'webkitvisibilitychange' }
-		: { aA: 'hidden', au: 'visibilitychange' };
+		? { aB: 'webkitHidden', au: 'webkitvisibilitychange' }
+		: { aB: 'hidden', au: 'visibilitychange' };
 }
 
 
@@ -4316,7 +4316,7 @@ function _Browser_getElement(id)
 				ai: _Browser_doc.documentElement.clientWidth,
 				R: _Browser_doc.documentElement.clientHeight
 			},
-			ay: {
+			az: {
 				aj: x + rect.left,
 				ak: y + rect.top,
 				ai: rect.width,
@@ -5183,7 +5183,7 @@ var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	var model = {
-		E: {am: $elm$core$Maybe$Nothing, an: $elm$core$Maybe$Nothing, ap: $elm$core$Maybe$Nothing, aq: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, at: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, aw: $elm$core$Maybe$Nothing, aD: $elm$core$Maybe$Nothing, aE: $elm$core$Maybe$Nothing, aF: $elm$core$Maybe$Nothing, aG: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aL: $elm$core$Maybe$Nothing, aM: $elm$core$Maybe$Nothing, aS: $elm$core$Maybe$Nothing, aT: $elm$core$Maybe$Nothing}
+		E: {am: $elm$core$Maybe$Nothing, an: $elm$core$Maybe$Nothing, ap: $elm$core$Maybe$Nothing, aq: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, at: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, aw: $elm$core$Maybe$Nothing, ax: $elm$core$Maybe$Nothing, aE: $elm$core$Maybe$Nothing, aF: $elm$core$Maybe$Nothing, aG: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aK: $elm$core$Maybe$Nothing, aM: $elm$core$Maybe$Nothing, aN: $elm$core$Maybe$Nothing, aT: $elm$core$Maybe$Nothing, aU: $elm$core$Maybe$Nothing}
 	};
 	return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 };
@@ -5222,41 +5222,42 @@ var $author$project$Model$orZero = function (maybe) {
 	return A2($elm$core$Maybe$withDefault, 0, maybe);
 };
 var $author$project$Model$calculateA = function (input) {
-	if (_Utils_eq(input.aq, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aw, $elm$core$Maybe$Nothing) && (_Utils_eq(input.av, $elm$core$Maybe$Nothing) && (_Utils_eq(input.at, $elm$core$Maybe$Nothing) && (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.am, $elm$core$Maybe$Nothing) && (_Utils_eq(input.an, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aL, $elm$core$Maybe$Nothing) && _Utils_eq(input.aM, $elm$core$Maybe$Nothing)))))))))) {
+	if (_Utils_eq(input.aq, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ax, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aw, $elm$core$Maybe$Nothing) && (_Utils_eq(input.at, $elm$core$Maybe$Nothing) && (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.am, $elm$core$Maybe$Nothing) && (_Utils_eq(input.an, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aM, $elm$core$Maybe$Nothing) && _Utils_eq(input.aN, $elm$core$Maybe$Nothing)))))))))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var g_a = ((($author$project$Model$orZero(input.ap) + $author$project$Model$orZero(input.av)) + $author$project$Model$orZero(input.as)) + $author$project$Model$orZero(input.an)) + $author$project$Model$orZero(input.aM);
-		var a = ((($author$project$Model$orZero(input.aq) + $author$project$Model$orZero(input.aw)) + $author$project$Model$orZero(input.at)) + $author$project$Model$orZero(input.am)) + $author$project$Model$orZero(input.aL);
+		var g_a = ((($author$project$Model$orZero(input.ap) + $author$project$Model$orZero(input.aw)) + $author$project$Model$orZero(input.as)) + $author$project$Model$orZero(input.an)) + $author$project$Model$orZero(input.aN);
+		var a = ((($author$project$Model$orZero(input.aq) + $author$project$Model$orZero(input.ax)) + $author$project$Model$orZero(input.at)) + $author$project$Model$orZero(input.am)) + $author$project$Model$orZero(input.aM);
 		return $elm$core$Maybe$Just((a + g_a) / 4);
 	}
 };
 var $author$project$Model$calculateC = function (input) {
-	if (_Utils_eq(input.aG, $elm$core$Maybe$Nothing) && _Utils_eq(input.aF, $elm$core$Maybe$Nothing)) {
+	if (_Utils_eq(input.aH, $elm$core$Maybe$Nothing) && _Utils_eq(input.aG, $elm$core$Maybe$Nothing)) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var g_c = $author$project$Model$orZero(input.aF);
-		var c = $author$project$Model$orZero(input.aG);
+		var g_c = $author$project$Model$orZero(input.aG);
+		var c = $author$project$Model$orZero(input.aH);
 		return $elm$core$Maybe$Just(c + g_c);
 	}
 };
 var $author$project$Model$calculateK = function (input) {
-	if (_Utils_eq(input.aE, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aD, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aI, $elm$core$Maybe$Nothing) && _Utils_eq(input.aH, $elm$core$Maybe$Nothing)))) {
+	if (_Utils_eq(input.aF, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aE, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aJ, $elm$core$Maybe$Nothing) && _Utils_eq(input.aI, $elm$core$Maybe$Nothing)))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var k_m = $author$project$Model$orZero(input.aI);
-		var k_i = $author$project$Model$orZero(input.aE);
-		var g_m = $author$project$Model$orZero(input.aH);
-		var g_k = $author$project$Model$orZero(input.aD);
-		return $elm$core$Maybe$Just(((k_i + g_k) + k_m) + g_m);
+		var k_m = $author$project$Model$orZero(input.aJ);
+		var k_i = $author$project$Model$orZero(input.aF);
+		var k_d = $author$project$Model$orZero(input.av);
+		var g_m = $author$project$Model$orZero(input.aI);
+		var g_k = $author$project$Model$orZero(input.aE);
+		return $elm$core$Maybe$Just((((k_i + g_k) + k_m) + g_m) + (k_d / 2));
 	}
 };
 var $author$project$Model$calculateS = function (input) {
-	if (_Utils_eq(input.aT, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aJ, $elm$core$Maybe$Nothing) && _Utils_eq(input.aS, $elm$core$Maybe$Nothing))) {
+	if (_Utils_eq(input.aU, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aK, $elm$core$Maybe$Nothing) && _Utils_eq(input.aT, $elm$core$Maybe$Nothing))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var s_u = $author$project$Model$orZero(input.aT);
-		var s_c = $author$project$Model$orZero(input.aJ);
-		var g_s = $author$project$Model$orZero(input.aS);
+		var s_u = $author$project$Model$orZero(input.aU);
+		var s_c = $author$project$Model$orZero(input.aK);
+		var g_s = $author$project$Model$orZero(input.aT);
 		return $elm$core$Maybe$Just((s_u + (0.5 * s_c)) + g_s);
 	}
 };
@@ -5818,83 +5819,89 @@ var $author$project$Model$setCables = F2(
 			model,
 			{at: a});
 	});
-var $author$project$Model$setDeskpadGbs = F2(
+var $author$project$Model$setDesigned = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{av: a});
 	});
-var $author$project$Model$setDeskpads = F2(
+var $author$project$Model$setDeskpadGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aw: a});
 	});
-var $author$project$Model$setKeyboardGbs = F2(
+var $author$project$Model$setDeskpads = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aD: a});
+			{ax: a});
 	});
-var $author$project$Model$setKeyboards = F2(
+var $author$project$Model$setKeyboardGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aE: a});
 	});
-var $author$project$Model$setKeycapGbs = F2(
+var $author$project$Model$setKeyboards = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aF: a});
 	});
-var $author$project$Model$setKeycapSets = F2(
+var $author$project$Model$setKeycapGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aG: a});
 	});
-var $author$project$Model$setMacropadGbs = F2(
+var $author$project$Model$setKeycapSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aH: a});
 	});
-var $author$project$Model$setMacropads = F2(
+var $author$project$Model$setMacropadGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aI: a});
 	});
-var $author$project$Model$setModifiedSwitchSets = F2(
+var $author$project$Model$setMacropads = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aJ: a});
 	});
-var $author$project$Model$setNoveltyKits = F2(
+var $author$project$Model$setModifiedSwitchSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aL: a});
+			{aK: a});
 	});
-var $author$project$Model$setNoveltyKitsGbs = F2(
+var $author$project$Model$setNoveltyKits = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aM: a});
 	});
+var $author$project$Model$setNoveltyKitsGbs = F2(
+	function (a, model) {
+		return _Utils_update(
+			model,
+			{aN: a});
+	});
 var $author$project$Model$setSwitchGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aS: a});
+			{aT: a});
 	});
 var $author$project$Model$setSwitchSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aT: a});
+			{aU: a});
 	});
 var $elm$html$Html$table = _VirtualDom_node('table');
 var $author$project$Messages$tooltip_accessories = 'Total number of other keyboard accessories you own such as stand-alone or spare PCBs, alternate plates, switch testers, etc.';
@@ -5903,6 +5910,7 @@ var $author$project$Messages$tooltip_artisan_gbs = 'Total number of artisan keyc
 var $author$project$Messages$tooltip_artisans = 'Total number of artisan keycaps you own. This does not include novelties.';
 var $author$project$Messages$tooltip_cable_gbs = 'Total number of \'fancy\' cables you currently have on order but have not yet received';
 var $author$project$Messages$tooltip_cables = 'Total number of \'fancy\' cables you own.';
+var $author$project$Messages$tooltip_designed = 'The number of keyboards and macropads in your collection that you personally designed';
 var $author$project$Messages$tooltip_deskpad_gbs = 'Total number of desk mats you currently have on order but have not yet received';
 var $author$project$Messages$tooltip_deskpads = 'Total number of desk mats you own.';
 var $author$project$Messages$tooltip_keyboard_gbs = 'Total number of keyboards you currently have on order but have not yet received.';
@@ -5955,7 +5963,8 @@ var $author$project$View$inputFields = A2(
 									A3($author$project$View$inputField, 'Keyboards', $author$project$Messages$tooltip_keyboards, $author$project$Model$setKeyboards),
 									A3($author$project$View$inputField, 'Keyboard group buys', $author$project$Messages$tooltip_keyboard_gbs, $author$project$Model$setKeyboardGbs),
 									A3($author$project$View$inputField, 'Macropads', $author$project$Messages$tooltip_macropads, $author$project$Model$setMacropads),
-									A3($author$project$View$inputField, 'Macropad group buys', $author$project$Messages$tooltip_macropad_gbs, $author$project$Model$setMacropadGbs)
+									A3($author$project$View$inputField, 'Macropad group buys', $author$project$Messages$tooltip_macropad_gbs, $author$project$Model$setMacropadGbs),
+									A3($author$project$View$inputField, 'Keyboards you designed', $author$project$Messages$tooltip_designed, $author$project$Model$setDesigned)
 								]))
 						])),
 					A2(
@@ -6074,10 +6083,10 @@ var $author$project$View$view = function (model) {
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
-		aC: $author$project$Main$init,
-		aR: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		aV: $author$project$Main$update,
-		aW: $author$project$View$view
+		aD: $author$project$Main$init,
+		aS: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		aW: $author$project$Main$update,
+		aX: $author$project$View$view
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(

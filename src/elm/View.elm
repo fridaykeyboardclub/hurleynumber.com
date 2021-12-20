@@ -63,6 +63,7 @@ inputFields =
           , inputField "Keyboard group buys" tooltip_keyboard_gbs setKeyboardGbs
           , inputField "Macropads" tooltip_macropads setMacropads
           , inputField "Macropad group buys" tooltip_macropad_gbs setMacropadGbs
+          , inputField "Keyboards you designed" tooltip_designed setDesigned
           ]
         ]
       , div [ class "column is-half" ]

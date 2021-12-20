@@ -4,6 +4,7 @@ tooltip_keyboards = "Total number of keyboards you own. A keyboard is a PCB and 
 tooltip_keyboard_gbs = "Total number of keyboards you currently have on order but have not yet received."
 tooltip_macropads = "Total number of macropads you own"
 tooltip_macropad_gbs = "Total number of macropads you currently have on order but have not yet received."
+tooltip_designed = "The number of keyboards and macropads in your collection that you personally designed"
 
 tooltip_switches = "Total number of stock switch sets that you own. A set of switches sufficient to fill a normal-sized board. Duplicate sets are counted if they were purchased separately or are used/intended to be used on separate boards."
 tooltip_modified_switches = "Total number of customized sets of switches that have been modified by you. Modified switch sets include those that you have lubed, filmed, or made other similar modifications to. Clipping switch pins does not count as a modification. If you make Frankenswitches (where you take components from one set of switches and use them to replace the components of another set of switches) both sets are considered modified if both sets have been reassembled. Each set of modified switches is counted as a single set regardless of the number of modifications made."
