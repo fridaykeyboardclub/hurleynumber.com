@@ -5,7 +5,7 @@ tooltip_keyboard_gbs = "Total number of keyboards you currently have on order bu
 tooltip_macropads = "Total number of macropads you own"
 tooltip_macropad_gbs = "Total number of macropads you currently have on order but have not yet received."
 
-tooltip_unmodified_switches = "Total number of stock switch sets that you own. A set of switches sufficient to fill a normal-sized board. Duplicate sets are counted if they were purchased separately or are used/intended to be used on separate boards."
+tooltip_switches = "Total number of stock switch sets that you own. A set of switches sufficient to fill a normal-sized board. Duplicate sets are counted if they were purchased separately or are used/intended to be used on separate boards."
 tooltip_modified_switches = "Total number of customized sets of switches that have been modified by you. Modified switch sets include those that you have lubed, filmed, or made other similar modifications to. Clipping switch pins does not count as a modification. If you make Frankenswitches (where you take components from one set of switches and use them to replace the components of another set of switches) both sets are considered modified if both sets have been reassembled. Each set of modified switches is counted as a single set regardless of the number of modifications made."
 tooltip_switch_gbs = "Total number of sets of switches you currently have on order but have not yet received."
 
@@ -20,3 +20,5 @@ tooltip_cables = "Total number of 'fancy' cables you own."
 tooltip_cable_gbs = "Total number of 'fancy' cables you currently have on order but have not yet received"
 tooltip_accessories = "Total number of other keyboard accessories you own such as stand-alone or spare PCBs, alternate plates, switch testers, etc."
 tooltip_accessory_gbs = "Total number of other keyboard accessories (spare PCBs, alternate plates, switch testers, etc.) you currently have on order but have not yet received"
+tooltip_novelties = "Number of novelty kits you have"
+tooltip_novelties_gbs = "Number of novelty kits you have on order but have not yet received"

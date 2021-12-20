@@ -12,11 +12,13 @@ type alias HurleyInput =
   , keyboardGbs : Maybe Int
   , macropads : Maybe Int
   , macropadGbs : Maybe Int
-  , unmodifiedSwitchSets : Maybe Int
+  , switchSets : Maybe Int
   , modifiedSwitchSets : Maybe Int
   , switchGbs : Maybe Int
   , keycapSets : Maybe Int
   , keycapGbs : Maybe Int
+  , noveltyKits : Maybe Int
+  , noveltyKitsGbs : Maybe Int
   , artisans : Maybe Int
   , artisanGbs : Maybe Int
   , deskpads : Maybe Int
@@ -37,11 +39,13 @@ setKeyboards a model = { model | keyboards = a }
 setKeyboardGbs a model = { model | keyboardGbs = a }
 setMacropads a model = { model | macropads = a }
 setMacropadGbs a model = { model | macropadGbs = a }
-setUnmodifiedSwitchSets a model = { model | unmodifiedSwitchSets = a }
+setSwitchSets a model = { model | switchSets = a }
 setModifiedSwitchSets a model = { model | modifiedSwitchSets = a }
 setSwitchGbs a model = { model | switchGbs = a }
 setKeycapSets a model = { model | keycapSets = a }
 setKeycapGbs a model = { model | keycapGbs = a }
+setNoveltyKits a model = { model | noveltyKits = a }
+setNoveltyKitsGbs a model = { model | noveltyKitsGbs = a }
 setArtisans a model = { model | artisans = a }
 setArtisanGbs a model = { model | artisanGbs = a }
 setDeskpads a model = { model | deskpads = a }
@@ -78,16 +82,16 @@ calculateK input =
     in Just (k_i + g_k + k_m + g_m)
 
 calculateS input =
-  if input.unmodifiedSwitchSets == Nothing
+  if input.switchSets == Nothing
     && input.modifiedSwitchSets == Nothing
     && input.switchGbs == Nothing then
     Nothing
   else
     let
-      s_u = input.unmodifiedSwitchSets |> orZero
+      s_u = input.switchSets |> orZero
       s_c = input.modifiedSwitchSets |> orZero
       g_s = input.switchGbs |> orZero
-    in Just (s_u + (1.5 * s_c) + g_s)
+    in Just (s_u + (0.5 * s_c) + g_s)
 
 calculateC input =
   if input.keycapSets == Nothing && input.keycapGbs == Nothing then
@@ -102,12 +106,13 @@ calculateA input =
   if input.artisans == Nothing && input.artisanGbs == Nothing
     && input.deskpads == Nothing && input.deskpadGbs == Nothing
     && input.cables == Nothing && input.cableGbs == Nothing
-    && input.accessories == Nothing && input.accessoryGbs == Nothing then
+    && input.accessories == Nothing && input.accessoryGbs == Nothing
+    && input.noveltyKits == Nothing && input.noveltyKitsGbs == Nothing then
     Nothing
   else
     let
-      a = orZero input.artisans + orZero input.deskpads + orZero input.cables + orZero input.accessories
-      g_a = orZero input.artisanGbs + orZero input.deskpadGbs + orZero input.cableGbs + orZero input.accessoryGbs
+      a = orZero input.artisans + orZero input.deskpads + orZero input.cables + orZero input.accessories + orZero input.noveltyKits
+      g_a = orZero input.artisanGbs + orZero input.deskpadGbs + orZero input.cableGbs + orZero input.accessoryGbs + orZero input.noveltyKitsGbs
     in Just ((a + g_a) / 4)
 
 orZero maybe = maybe |> withDefault 0 |> toFloat

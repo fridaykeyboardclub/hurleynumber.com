@@ -68,7 +68,7 @@ inputFields =
       , div [ class "column is-half" ]
         [ h2 [ class "inputtitle" ] [ text "S: Switches" ]
         , table []
-          [ inputField "Switch sets (unmodified)" tooltip_unmodified_switches setUnmodifiedSwitchSets
+          [ inputField "Switch sets (total)" tooltip_switches setSwitchSets
           , inputField "Switch sets (modified)" tooltip_modified_switches setModifiedSwitchSets
           , inputField "Switch group buys" tooltip_switch_gbs setSwitchGbs
           ]
@@ -87,10 +87,12 @@ inputFields =
         , table []
           [ inputField "Artisans" tooltip_artisans setArtisans
           , inputField "Artisan group buys" tooltip_artisan_gbs setArtisanGbs
-          , inputField "Deskpads" tooltip_deskpads setDeskpads
-          , inputField "Deskpad group buys" tooltip_deskpad_gbs setDeskpadGbs
           , inputField "Cables" tooltip_cables setCables
           , inputField "Cable group buys" tooltip_cable_gbs setCableGbs
+          , inputField "Deskpads" tooltip_deskpads setDeskpads
+          , inputField "Deskpad group buys" tooltip_deskpad_gbs setDeskpadGbs
+          , inputField "Novelty kits" tooltip_novelties setNoveltyKits
+          , inputField "Novelty kit group buys" tooltip_novelties_gbs setNoveltyKitsGbs
           , inputField "Other accessories" tooltip_accessories setAccessories
           , inputField "Other accessory group buys" tooltip_accessory_gbs setAccessoryGbs
           ]

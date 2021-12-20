@@ -1858,8 +1858,8 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 		flagDecoder,
 		args,
 		impl.aC,
-		impl.aT,
-		impl.aP,
+		impl.aV,
+		impl.aR,
 		function() { return function() {} }
 	);
 });
@@ -3929,10 +3929,10 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 		flagDecoder,
 		args,
 		impl.aC,
-		impl.aT,
-		impl.aP,
+		impl.aV,
+		impl.aR,
 		function(sendToApp, initialModel) {
-			var view = impl.aU;
+			var view = impl.aW;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3965,11 +3965,11 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 		flagDecoder,
 		args,
 		impl.aC,
-		impl.aT,
-		impl.aP,
+		impl.aV,
+		impl.aR,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.I && impl.I(sendToApp)
-			var view = impl.aU;
+			var view = impl.aW;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3982,7 +3982,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aR) && (_VirtualDom_doc.title = title = doc.aR);
+				(title !== doc.aU) && (_VirtualDom_doc.title = title = doc.aU);
 			});
 		}
 	);
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aL;
-	var onUrlRequest = impl.aM;
+	var onUrlChange = impl.aN;
+	var onUrlRequest = impl.aO;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4073,9 +4073,9 @@ function _Browser_application(impl)
 		{
 			return A3(impl.aC, flags, _Browser_getUrl(), key);
 		},
-		aU: impl.aU,
-		aT: impl.aT,
-		aP: impl.aP
+		aW: impl.aW,
+		aV: impl.aV,
+		aR: impl.aR
 	});
 }
 
@@ -5183,7 +5183,7 @@ var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	var model = {
-		E: {am: $elm$core$Maybe$Nothing, an: $elm$core$Maybe$Nothing, ap: $elm$core$Maybe$Nothing, aq: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, at: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, aw: $elm$core$Maybe$Nothing, aD: $elm$core$Maybe$Nothing, aE: $elm$core$Maybe$Nothing, aF: $elm$core$Maybe$Nothing, aG: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aQ: $elm$core$Maybe$Nothing, aS: $elm$core$Maybe$Nothing}
+		E: {am: $elm$core$Maybe$Nothing, an: $elm$core$Maybe$Nothing, ap: $elm$core$Maybe$Nothing, aq: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, at: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, aw: $elm$core$Maybe$Nothing, aD: $elm$core$Maybe$Nothing, aE: $elm$core$Maybe$Nothing, aF: $elm$core$Maybe$Nothing, aG: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aL: $elm$core$Maybe$Nothing, aM: $elm$core$Maybe$Nothing, aS: $elm$core$Maybe$Nothing, aT: $elm$core$Maybe$Nothing}
 	};
 	return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 };
@@ -5222,11 +5222,11 @@ var $author$project$Model$orZero = function (maybe) {
 	return A2($elm$core$Maybe$withDefault, 0, maybe);
 };
 var $author$project$Model$calculateA = function (input) {
-	if (_Utils_eq(input.aq, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aw, $elm$core$Maybe$Nothing) && (_Utils_eq(input.av, $elm$core$Maybe$Nothing) && (_Utils_eq(input.at, $elm$core$Maybe$Nothing) && (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.am, $elm$core$Maybe$Nothing) && _Utils_eq(input.an, $elm$core$Maybe$Nothing)))))))) {
+	if (_Utils_eq(input.aq, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aw, $elm$core$Maybe$Nothing) && (_Utils_eq(input.av, $elm$core$Maybe$Nothing) && (_Utils_eq(input.at, $elm$core$Maybe$Nothing) && (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.am, $elm$core$Maybe$Nothing) && (_Utils_eq(input.an, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aL, $elm$core$Maybe$Nothing) && _Utils_eq(input.aM, $elm$core$Maybe$Nothing)))))))))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var g_a = (($author$project$Model$orZero(input.ap) + $author$project$Model$orZero(input.av)) + $author$project$Model$orZero(input.as)) + $author$project$Model$orZero(input.an);
-		var a = (($author$project$Model$orZero(input.aq) + $author$project$Model$orZero(input.aw)) + $author$project$Model$orZero(input.at)) + $author$project$Model$orZero(input.am);
+		var g_a = ((($author$project$Model$orZero(input.ap) + $author$project$Model$orZero(input.av)) + $author$project$Model$orZero(input.as)) + $author$project$Model$orZero(input.an)) + $author$project$Model$orZero(input.aM);
+		var a = ((($author$project$Model$orZero(input.aq) + $author$project$Model$orZero(input.aw)) + $author$project$Model$orZero(input.at)) + $author$project$Model$orZero(input.am)) + $author$project$Model$orZero(input.aL);
 		return $elm$core$Maybe$Just((a + g_a) / 4);
 	}
 };
@@ -5251,13 +5251,13 @@ var $author$project$Model$calculateK = function (input) {
 	}
 };
 var $author$project$Model$calculateS = function (input) {
-	if (_Utils_eq(input.aS, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aJ, $elm$core$Maybe$Nothing) && _Utils_eq(input.aQ, $elm$core$Maybe$Nothing))) {
+	if (_Utils_eq(input.aT, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aJ, $elm$core$Maybe$Nothing) && _Utils_eq(input.aS, $elm$core$Maybe$Nothing))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var s_u = $author$project$Model$orZero(input.aS);
+		var s_u = $author$project$Model$orZero(input.aT);
 		var s_c = $author$project$Model$orZero(input.aJ);
-		var g_s = $author$project$Model$orZero(input.aQ);
-		return $elm$core$Maybe$Just((s_u + (1.5 * s_c)) + g_s);
+		var g_s = $author$project$Model$orZero(input.aS);
+		return $elm$core$Maybe$Just((s_u + (0.5 * s_c)) + g_s);
 	}
 };
 var $elm$core$Basics$ge = _Utils_ge;
@@ -5872,17 +5872,29 @@ var $author$project$Model$setModifiedSwitchSets = F2(
 			model,
 			{aJ: a});
 	});
+var $author$project$Model$setNoveltyKits = F2(
+	function (a, model) {
+		return _Utils_update(
+			model,
+			{aL: a});
+	});
+var $author$project$Model$setNoveltyKitsGbs = F2(
+	function (a, model) {
+		return _Utils_update(
+			model,
+			{aM: a});
+	});
 var $author$project$Model$setSwitchGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aQ: a});
+			{aS: a});
 	});
-var $author$project$Model$setUnmodifiedSwitchSets = F2(
+var $author$project$Model$setSwitchSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aS: a});
+			{aT: a});
 	});
 var $elm$html$Html$table = _VirtualDom_node('table');
 var $author$project$Messages$tooltip_accessories = 'Total number of other keyboard accessories you own such as stand-alone or spare PCBs, alternate plates, switch testers, etc.';
@@ -5900,8 +5912,10 @@ var $author$project$Messages$tooltip_keycaps = 'Total number of keycaps sets you
 var $author$project$Messages$tooltip_macropad_gbs = 'Total number of macropads you currently have on order but have not yet received.';
 var $author$project$Messages$tooltip_macropads = 'Total number of macropads you own';
 var $author$project$Messages$tooltip_modified_switches = 'Total number of customized sets of switches that have been modified by you. Modified switch sets include those that you have lubed, filmed, or made other similar modifications to. Clipping switch pins does not count as a modification. If you make Frankenswitches (where you take components from one set of switches and use them to replace the components of another set of switches) both sets are considered modified if both sets have been reassembled. Each set of modified switches is counted as a single set regardless of the number of modifications made.';
+var $author$project$Messages$tooltip_novelties = 'Number of novelty kits you have';
+var $author$project$Messages$tooltip_novelties_gbs = 'Number of novelty kits you have on order but have not yet received';
 var $author$project$Messages$tooltip_switch_gbs = 'Total number of sets of switches you currently have on order but have not yet received.';
-var $author$project$Messages$tooltip_unmodified_switches = 'Total number of stock switch sets that you own. A set of switches sufficient to fill a normal-sized board. Duplicate sets are counted if they were purchased separately or are used/intended to be used on separate boards.';
+var $author$project$Messages$tooltip_switches = 'Total number of stock switch sets that you own. A set of switches sufficient to fill a normal-sized board. Duplicate sets are counted if they were purchased separately or are used/intended to be used on separate boards.';
 var $author$project$View$inputFields = A2(
 	$elm$html$Html$div,
 	_List_Nil,
@@ -5967,7 +5981,7 @@ var $author$project$View$inputFields = A2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									A3($author$project$View$inputField, 'Switch sets (unmodified)', $author$project$Messages$tooltip_unmodified_switches, $author$project$Model$setUnmodifiedSwitchSets),
+									A3($author$project$View$inputField, 'Switch sets (total)', $author$project$Messages$tooltip_switches, $author$project$Model$setSwitchSets),
 									A3($author$project$View$inputField, 'Switch sets (modified)', $author$project$Messages$tooltip_modified_switches, $author$project$Model$setModifiedSwitchSets),
 									A3($author$project$View$inputField, 'Switch group buys', $author$project$Messages$tooltip_switch_gbs, $author$project$Model$setSwitchGbs)
 								]))
@@ -6033,10 +6047,12 @@ var $author$project$View$inputFields = A2(
 								[
 									A3($author$project$View$inputField, 'Artisans', $author$project$Messages$tooltip_artisans, $author$project$Model$setArtisans),
 									A3($author$project$View$inputField, 'Artisan group buys', $author$project$Messages$tooltip_artisan_gbs, $author$project$Model$setArtisanGbs),
-									A3($author$project$View$inputField, 'Deskpads', $author$project$Messages$tooltip_deskpads, $author$project$Model$setDeskpads),
-									A3($author$project$View$inputField, 'Deskpad group buys', $author$project$Messages$tooltip_deskpad_gbs, $author$project$Model$setDeskpadGbs),
 									A3($author$project$View$inputField, 'Cables', $author$project$Messages$tooltip_cables, $author$project$Model$setCables),
 									A3($author$project$View$inputField, 'Cable group buys', $author$project$Messages$tooltip_cable_gbs, $author$project$Model$setCableGbs),
+									A3($author$project$View$inputField, 'Deskpads', $author$project$Messages$tooltip_deskpads, $author$project$Model$setDeskpads),
+									A3($author$project$View$inputField, 'Deskpad group buys', $author$project$Messages$tooltip_deskpad_gbs, $author$project$Model$setDeskpadGbs),
+									A3($author$project$View$inputField, 'Novelty kits', $author$project$Messages$tooltip_novelties, $author$project$Model$setNoveltyKits),
+									A3($author$project$View$inputField, 'Novelty kit group buys', $author$project$Messages$tooltip_novelties_gbs, $author$project$Model$setNoveltyKitsGbs),
 									A3($author$project$View$inputField, 'Other accessories', $author$project$Messages$tooltip_accessories, $author$project$Model$setAccessories),
 									A3($author$project$View$inputField, 'Other accessory group buys', $author$project$Messages$tooltip_accessory_gbs, $author$project$Model$setAccessoryGbs)
 								]))
@@ -6059,9 +6075,9 @@ var $author$project$View$view = function (model) {
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
 		aC: $author$project$Main$init,
-		aP: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		aT: $author$project$Main$update,
-		aU: $author$project$View$view
+		aR: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		aV: $author$project$Main$update,
+		aW: $author$project$View$view
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(
