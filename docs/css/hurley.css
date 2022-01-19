@@ -23,7 +23,7 @@ header {
   flex-wrap: wrap;
   font-size: 42px;
   justify-content: center;
-  margin-bottom: 2rem; }
+  margin-bottom: 1rem; }
   #formula div.formula-part {
     display: inline-block; }
   #formula #formula-head-part {
@@ -40,6 +40,12 @@ header {
     #formula #formula-fraction-part #formula-fraction-bottom {
       width: 100%;
       text-align: center; }
+
+#sigma {
+  font-size: 30px;
+  margin-bottom: 2rem;
+  justify-content: center;
+  display: flex; }
 
 input[type="number"] {
   width: 8em; }

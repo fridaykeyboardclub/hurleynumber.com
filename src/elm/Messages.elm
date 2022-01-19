@@ -23,3 +23,5 @@ tooltip_accessories = "Total number of other keyboard accessories you own such a
 tooltip_accessory_gbs = "Total number of other keyboard accessories (spare PCBs, alternate plates, switch testers, etc.) you currently have on order but have not yet received"
 tooltip_novelties = "Number of novelty kits you have"
 tooltip_novelties_gbs = "Number of novelty kits you have on order but have not yet received"
+
+tooltip_sigma = "The \"Hurley Sigma\", the standard deviation of the keyboards, switches and keycaps components; a measure of how \"unbalanced\" your collection is"

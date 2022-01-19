@@ -18,29 +18,38 @@ view model =
 -- Html for the formula output
 formula : Model -> Html Event
 formula model =
-  div [ id "result" ]
-    -- TODO add more granular display
-    [ div [ id "formula" ]
-      [ div [ id "formula-head-part", class "formula-part" ]
-        [ img [ src "img/mykehead.png", id "mykehead" ] []
-        , text "="
-        ]
-      , div [ id "formula-fraction-part", class "formula-part" ]
-        [ div [ id "formula-fraction-top" ]
-          [ formulaNumber "K" "Keyboards" (calculateK model.input)
-          , text " + "
-          , formulaNumber "S" "Switches" (calculateS model.input)
-          , text " + "
-          , formulaNumber "C" "Keycaps" (calculateC model.input)
-          , text " + "
-          , formulaNumber "A" "Accessories / 4" (calculateA model.input)
+  let
+    calculated = calculate model.input
+  in
+    div [ id "result" ]
+      -- TODO add more granular display
+      [ div [ id "formula" ]
+        [ div [ id "formula-head-part", class "formula-part" ]
+          [ img [ src "img/mykehead.png", id "mykehead" ] []
+          , text "="
           ]
-        , div [ id "formula-fraction-bottom", class "formula-part" ] [ text "3" ]
+        , div [ id "formula-fraction-part", class "formula-part" ]
+          [ div [ id "formula-fraction-top" ]
+            [ formulaNumber "K" "Keyboards" (calculateK model.input)
+            , text " + "
+            , formulaNumber "S" "Switches" (calculateS model.input)
+            , text " + "
+            , formulaNumber "C" "Keycaps" (calculateC model.input)
+            , text " + "
+            , formulaNumber "A" "Accessories / 4" (calculateA model.input)
+            ]
+          , div [ id "formula-fraction-bottom", class "formula-part" ] [ text "3" ]
+          ]
+        , div [ id "formula-result-part", class "formula-part" ]
+          [ text ("= " ++ calculated.number) ]
         ]
-      , div [ id "formula-result-part", class "formula-part" ]
-        [ text ("= " ++ calculate model.input) ]
+      , div [ id "sigma"]
+        [ span [ class "has-tooltip-multiline", attribute "data-tooltip" tooltip_sigma ]
+          [ text "σ" ]
+        , text "\u{00A0}= "
+        , text calculated.sigma
+        ]
       ]
-    ]
 
 formulaNumber : String -> String -> Maybe Float -> Html Event
 formulaNumber name altText maybeNumber =

@@ -31,6 +31,11 @@ type alias HurleyInput =
   -- TODO other input fields
   }
 
+type alias HurleyOutput =
+  { number : String
+  , sigma : String
+  }
+
 type Event
   = UpdateEvent (HurleyInput -> HurleyInput)
 
@@ -59,21 +64,30 @@ setAccessoryGbs a model = { model | accessoryGbs = a }
 
 -- Calculate the Hurley number from user input
 
-calculate : HurleyInput -> String
+calculate : HurleyInput -> HurleyOutput
 calculate input =
   let
     keyboards = calculateK input |> withDefault 0
     switches = calculateS input |> withDefault 0
     keycaps = calculateC input |> withDefault 0
     accessories = calculateA input |> withDefault 0
+    sigmaAvg = (keyboards + switches + keycaps) / 3
+    sigma = sqrt
+      ((keyboards - sigmaAvg) ^ 2
+      + (switches - sigmaAvg) ^ 2
+      + (keycaps - sigmaAvg) ^ 2
+      ) / 3
 
     calculated = (keyboards + switches + keycaps + accessories) / 3
   in
-    calculated |> Round.round 1
+    { number = calculated |> Round.round 1
+    , sigma = sigma |> Round.round 1
+    }
 
 calculateK input =
   if input.keyboards == Nothing && input.keyboardGbs == Nothing
-    && input.macropads == Nothing && input.macropadGbs == Nothing then
+    && input.macropads == Nothing && input.macropadGbs == Nothing
+    && input.designed == Nothing then
     Nothing
   else
     let

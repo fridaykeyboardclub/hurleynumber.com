@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aD,
-		impl.aW,
-		impl.aS,
+		impl.aF,
+		impl.aY,
+		impl.aU,
 		function() { return function() {} }
 	);
 });
@@ -3928,11 +3928,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aD,
-		impl.aW,
-		impl.aS,
+		impl.aF,
+		impl.aY,
+		impl.aU,
 		function(sendToApp, initialModel) {
-			var view = impl.aX;
+			var view = impl.aZ;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3964,12 +3964,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aD,
-		impl.aW,
-		impl.aS,
+		impl.aF,
+		impl.aY,
+		impl.aU,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.I && impl.I(sendToApp)
-			var view = impl.aX;
+			var view = impl.aZ;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3977,12 +3977,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.ar);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.at);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aV) && (_VirtualDom_doc.title = title = doc.aV);
+				(title !== doc.aX) && (_VirtualDom_doc.title = title = doc.aX);
 			});
 		}
 	);
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aO;
-	var onUrlRequest = impl.aP;
+	var onUrlChange = impl.aQ;
+	var onUrlRequest = impl.aR;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4059,9 +4059,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.aa === next.aa
+							&& curr.ab === next.ab
 							&& curr.S === next.S
-							&& curr.Y.a === next.Y.a
+							&& curr.Z.a === next.Z.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aD: function(flags)
+		aF: function(flags)
 		{
-			return A3(impl.aD, flags, _Browser_getUrl(), key);
+			return A3(impl.aF, flags, _Browser_getUrl(), key);
 		},
-		aX: impl.aX,
-		aW: impl.aW,
-		aS: impl.aS
+		aZ: impl.aZ,
+		aY: impl.aY,
+		aU: impl.aU
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aB: 'hidden', au: 'visibilitychange' }
+		? { aD: 'hidden', aw: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aB: 'mozHidden', au: 'mozvisibilitychange' }
+		? { aD: 'mozHidden', aw: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aB: 'msHidden', au: 'msvisibilitychange' }
+		? { aD: 'msHidden', aw: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aB: 'webkitHidden', au: 'webkitvisibilitychange' }
-		: { aB: 'hidden', au: 'visibilitychange' };
+		? { aD: 'webkitHidden', aw: 'webkitvisibilitychange' }
+		: { aD: 'hidden', aw: 'visibilitychange' };
 }
 
 
@@ -4232,11 +4232,11 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		ae: _Browser_getScene(),
-		ah: {
-			aj: _Browser_window.pageXOffset,
-			ak: _Browser_window.pageYOffset,
-			ai: _Browser_doc.documentElement.clientWidth,
+		af: _Browser_getScene(),
+		aj: {
+			al: _Browser_window.pageXOffset,
+			am: _Browser_window.pageYOffset,
+			ak: _Browser_doc.documentElement.clientWidth,
 			R: _Browser_doc.documentElement.clientHeight
 		}
 	};
@@ -4247,7 +4247,7 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		ai: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		ak: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
 		R: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
@@ -4271,14 +4271,14 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			ae: {
-				ai: node.scrollWidth,
+			af: {
+				ak: node.scrollWidth,
 				R: node.scrollHeight
 			},
-			ah: {
-				aj: node.scrollLeft,
-				ak: node.scrollTop,
-				ai: node.clientWidth,
+			aj: {
+				al: node.scrollLeft,
+				am: node.scrollTop,
+				ak: node.clientWidth,
 				R: node.clientHeight
 			}
 		};
@@ -4309,17 +4309,17 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			ae: _Browser_getScene(),
-			ah: {
-				aj: x,
-				ak: y,
-				ai: _Browser_doc.documentElement.clientWidth,
+			af: _Browser_getScene(),
+			aj: {
+				al: x,
+				am: y,
+				ak: _Browser_doc.documentElement.clientWidth,
 				R: _Browser_doc.documentElement.clientHeight
 			},
-			az: {
-				aj: x + rect.left,
-				ak: y + rect.top,
-				ai: rect.width,
+			aB: {
+				al: x + rect.left,
+				am: y + rect.top,
+				ak: rect.width,
 				R: rect.height
 			}
 		};
@@ -4900,7 +4900,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {Q: fragment, S: host, W: path, Y: port_, aa: protocol, ab: query};
+		return {Q: fragment, S: host, X: path, Z: port_, ab: protocol, ac: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5183,7 +5183,7 @@ var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	var model = {
-		E: {am: $elm$core$Maybe$Nothing, an: $elm$core$Maybe$Nothing, ap: $elm$core$Maybe$Nothing, aq: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, at: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, aw: $elm$core$Maybe$Nothing, ax: $elm$core$Maybe$Nothing, aE: $elm$core$Maybe$Nothing, aF: $elm$core$Maybe$Nothing, aG: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aK: $elm$core$Maybe$Nothing, aM: $elm$core$Maybe$Nothing, aN: $elm$core$Maybe$Nothing, aT: $elm$core$Maybe$Nothing, aU: $elm$core$Maybe$Nothing}
+		E: {ao: $elm$core$Maybe$Nothing, ap: $elm$core$Maybe$Nothing, ar: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, au: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, ax: $elm$core$Maybe$Nothing, ay: $elm$core$Maybe$Nothing, az: $elm$core$Maybe$Nothing, aG: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aK: $elm$core$Maybe$Nothing, aL: $elm$core$Maybe$Nothing, aM: $elm$core$Maybe$Nothing, aO: $elm$core$Maybe$Nothing, aP: $elm$core$Maybe$Nothing, aV: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing}
 	};
 	return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 };
@@ -5209,6 +5209,14 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
 		if (!maybe.$) {
@@ -5222,45 +5230,46 @@ var $author$project$Model$orZero = function (maybe) {
 	return A2($elm$core$Maybe$withDefault, 0, maybe);
 };
 var $author$project$Model$calculateA = function (input) {
-	if (_Utils_eq(input.aq, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ax, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aw, $elm$core$Maybe$Nothing) && (_Utils_eq(input.at, $elm$core$Maybe$Nothing) && (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.am, $elm$core$Maybe$Nothing) && (_Utils_eq(input.an, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aM, $elm$core$Maybe$Nothing) && _Utils_eq(input.aN, $elm$core$Maybe$Nothing)))))))))) {
+	if (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ar, $elm$core$Maybe$Nothing) && (_Utils_eq(input.az, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ay, $elm$core$Maybe$Nothing) && (_Utils_eq(input.av, $elm$core$Maybe$Nothing) && (_Utils_eq(input.au, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ao, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aO, $elm$core$Maybe$Nothing) && _Utils_eq(input.aP, $elm$core$Maybe$Nothing)))))))))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var g_a = ((($author$project$Model$orZero(input.ap) + $author$project$Model$orZero(input.aw)) + $author$project$Model$orZero(input.as)) + $author$project$Model$orZero(input.an)) + $author$project$Model$orZero(input.aN);
-		var a = ((($author$project$Model$orZero(input.aq) + $author$project$Model$orZero(input.ax)) + $author$project$Model$orZero(input.at)) + $author$project$Model$orZero(input.am)) + $author$project$Model$orZero(input.aM);
+		var g_a = ((($author$project$Model$orZero(input.ar) + $author$project$Model$orZero(input.ay)) + $author$project$Model$orZero(input.au)) + $author$project$Model$orZero(input.ap)) + $author$project$Model$orZero(input.aP);
+		var a = ((($author$project$Model$orZero(input.as) + $author$project$Model$orZero(input.az)) + $author$project$Model$orZero(input.av)) + $author$project$Model$orZero(input.ao)) + $author$project$Model$orZero(input.aO);
 		return $elm$core$Maybe$Just((a + g_a) / 4);
 	}
 };
 var $author$project$Model$calculateC = function (input) {
-	if (_Utils_eq(input.aH, $elm$core$Maybe$Nothing) && _Utils_eq(input.aG, $elm$core$Maybe$Nothing)) {
+	if (_Utils_eq(input.aJ, $elm$core$Maybe$Nothing) && _Utils_eq(input.aI, $elm$core$Maybe$Nothing)) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var g_c = $author$project$Model$orZero(input.aG);
-		var c = $author$project$Model$orZero(input.aH);
+		var g_c = $author$project$Model$orZero(input.aI);
+		var c = $author$project$Model$orZero(input.aJ);
 		return $elm$core$Maybe$Just(c + g_c);
 	}
 };
 var $author$project$Model$calculateK = function (input) {
-	if (_Utils_eq(input.aF, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aE, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aJ, $elm$core$Maybe$Nothing) && _Utils_eq(input.aI, $elm$core$Maybe$Nothing)))) {
+	if (_Utils_eq(input.aH, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aG, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aL, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aK, $elm$core$Maybe$Nothing) && _Utils_eq(input.ax, $elm$core$Maybe$Nothing))))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var k_m = $author$project$Model$orZero(input.aJ);
-		var k_i = $author$project$Model$orZero(input.aF);
-		var k_d = $author$project$Model$orZero(input.av);
-		var g_m = $author$project$Model$orZero(input.aI);
-		var g_k = $author$project$Model$orZero(input.aE);
+		var k_m = $author$project$Model$orZero(input.aL);
+		var k_i = $author$project$Model$orZero(input.aH);
+		var k_d = $author$project$Model$orZero(input.ax);
+		var g_m = $author$project$Model$orZero(input.aK);
+		var g_k = $author$project$Model$orZero(input.aG);
 		return $elm$core$Maybe$Just((((k_i + g_k) + k_m) + g_m) + (k_d / 2));
 	}
 };
 var $author$project$Model$calculateS = function (input) {
-	if (_Utils_eq(input.aU, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aK, $elm$core$Maybe$Nothing) && _Utils_eq(input.aT, $elm$core$Maybe$Nothing))) {
+	if (_Utils_eq(input.aW, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aM, $elm$core$Maybe$Nothing) && _Utils_eq(input.aV, $elm$core$Maybe$Nothing))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var s_u = $author$project$Model$orZero(input.aU);
-		var s_c = $author$project$Model$orZero(input.aK);
-		var g_s = $author$project$Model$orZero(input.aT);
+		var s_u = $author$project$Model$orZero(input.aW);
+		var s_c = $author$project$Model$orZero(input.aM);
+		var g_s = $author$project$Model$orZero(input.aV);
 		return $elm$core$Maybe$Just((s_u + (0.5 * s_c)) + g_s);
 	}
 };
+var $elm$core$Basics$pow = _Basics_pow;
 var $elm$core$Basics$ge = _Utils_ge;
 var $elm$core$Basics$not = _Basics_not;
 var $elm$core$Basics$negate = function (n) {
@@ -5522,6 +5531,7 @@ var $myrho$elm_round$Round$round = $myrho$elm_round$Round$roundFun(
 				}
 			}
 		}));
+var $elm$core$Basics$sqrt = _Basics_sqrt;
 var $author$project$Model$calculate = function (input) {
 	var switches = A2(
 		$elm$core$Maybe$withDefault,
@@ -5535,21 +5545,19 @@ var $author$project$Model$calculate = function (input) {
 		$elm$core$Maybe$withDefault,
 		0,
 		$author$project$Model$calculateK(input));
+	var sigmaAvg = ((keyboards + switches) + keycaps) / 3;
+	var sigma = $elm$core$Basics$sqrt(
+		(A2($elm$core$Basics$pow, keyboards - sigmaAvg, 2) + A2($elm$core$Basics$pow, switches - sigmaAvg, 2)) + A2($elm$core$Basics$pow, keycaps - sigmaAvg, 2)) / 3;
 	var accessories = A2(
 		$elm$core$Maybe$withDefault,
 		0,
 		$author$project$Model$calculateA(input));
 	var calculated = (((keyboards + switches) + keycaps) + accessories) / 3;
-	return A2($myrho$elm_round$Round$round, 1, calculated);
+	return {
+		V: A2($myrho$elm_round$Round$round, 1, calculated),
+		ag: A2($myrho$elm_round$Round$round, 1, sigma)
+	};
 };
-var $elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
-var $elm$html$Html$Attributes$attribute = $elm$virtual_dom$VirtualDom$attribute;
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
@@ -5582,7 +5590,9 @@ var $elm$html$Html$Attributes$src = function (url) {
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
+var $author$project$Messages$tooltip_sigma = 'The \"Hurley Sigma\", the standard deviation of the keyboards, switches and keycaps components; a measure of how \"unbalanced\" your collection is';
 var $author$project$View$formula = function (model) {
+	var calculated = $author$project$Model$calculate(model.E);
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5680,9 +5690,30 @@ var $author$project$View$formula = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text(
-								'= ' + $author$project$Model$calculate(model.E))
+								$elm$html$Html$text('= ' + calculated.V)
 							]))
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$id('sigma')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('has-tooltip-multiline'),
+								A2($elm$html$Html$Attributes$attribute, 'data-tooltip', $author$project$Messages$tooltip_sigma)
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('σ')
+							])),
+						$elm$html$Html$text('\u00A0= '),
+						$elm$html$Html$text(calculated.ag)
 					]))
 			]));
 };
@@ -5787,121 +5818,121 @@ var $author$project$Model$setAccessories = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{am: a});
+			{ao: a});
 	});
 var $author$project$Model$setAccessoryGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{an: a});
+			{ap: a});
 	});
 var $author$project$Model$setArtisanGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{ap: a});
+			{ar: a});
 	});
 var $author$project$Model$setArtisans = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aq: a});
+			{as: a});
 	});
 var $author$project$Model$setCableGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{as: a});
+			{au: a});
 	});
 var $author$project$Model$setCables = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{at: a});
+			{av: a});
 	});
 var $author$project$Model$setDesigned = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{av: a});
+			{ax: a});
 	});
 var $author$project$Model$setDeskpadGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aw: a});
+			{ay: a});
 	});
 var $author$project$Model$setDeskpads = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{ax: a});
+			{az: a});
 	});
 var $author$project$Model$setKeyboardGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aE: a});
+			{aG: a});
 	});
 var $author$project$Model$setKeyboards = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aF: a});
+			{aH: a});
 	});
 var $author$project$Model$setKeycapGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aG: a});
+			{aI: a});
 	});
 var $author$project$Model$setKeycapSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aH: a});
+			{aJ: a});
 	});
 var $author$project$Model$setMacropadGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aI: a});
+			{aK: a});
 	});
 var $author$project$Model$setMacropads = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aJ: a});
+			{aL: a});
 	});
 var $author$project$Model$setModifiedSwitchSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aK: a});
+			{aM: a});
 	});
 var $author$project$Model$setNoveltyKits = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aM: a});
+			{aO: a});
 	});
 var $author$project$Model$setNoveltyKitsGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aN: a});
+			{aP: a});
 	});
 var $author$project$Model$setSwitchGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aT: a});
+			{aV: a});
 	});
 var $author$project$Model$setSwitchSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aU: a});
+			{aW: a});
 	});
 var $elm$html$Html$table = _VirtualDom_node('table');
 var $author$project$Messages$tooltip_accessories = 'Total number of other keyboard accessories you own such as stand-alone or spare PCBs, alternate plates, switch testers, etc.';
@@ -6083,10 +6114,10 @@ var $author$project$View$view = function (model) {
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
-		aD: $author$project$Main$init,
-		aS: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		aW: $author$project$Main$update,
-		aX: $author$project$View$view
+		aF: $author$project$Main$init,
+		aU: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		aY: $author$project$Main$update,
+		aZ: $author$project$View$view
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(
