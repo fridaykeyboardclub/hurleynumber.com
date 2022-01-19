@@ -72,11 +72,12 @@ calculate input =
     keycaps = calculateC input |> withDefault 0
     accessories = calculateA input |> withDefault 0
     sigmaAvg = (keyboards + switches + keycaps) / 3
-    sigma = sqrt
+    variance =
       ((keyboards - sigmaAvg) ^ 2
       + (switches - sigmaAvg) ^ 2
       + (keycaps - sigmaAvg) ^ 2
       ) / 3
+    sigma = sqrt variance
 
     calculated = (keyboards + switches + keycaps + accessories) / 3
   in

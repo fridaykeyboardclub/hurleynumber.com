@@ -5546,8 +5546,8 @@ var $author$project$Model$calculate = function (input) {
 		0,
 		$author$project$Model$calculateK(input));
 	var sigmaAvg = ((keyboards + switches) + keycaps) / 3;
-	var sigma = $elm$core$Basics$sqrt(
-		(A2($elm$core$Basics$pow, keyboards - sigmaAvg, 2) + A2($elm$core$Basics$pow, switches - sigmaAvg, 2)) + A2($elm$core$Basics$pow, keycaps - sigmaAvg, 2)) / 3;
+	var variance = ((A2($elm$core$Basics$pow, keyboards - sigmaAvg, 2) + A2($elm$core$Basics$pow, switches - sigmaAvg, 2)) + A2($elm$core$Basics$pow, keycaps - sigmaAvg, 2)) / 3;
+	var sigma = $elm$core$Basics$sqrt(variance);
 	var accessories = A2(
 		$elm$core$Maybe$withDefault,
 		0,
