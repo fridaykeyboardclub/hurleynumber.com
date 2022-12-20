@@ -5537,6 +5537,7 @@ var $author$project$Model$calculate = function (input) {
 		$elm$core$Maybe$withDefault,
 		0,
 		$author$project$Model$calculateS(input));
+	var sigmaSwitches = A2($elm$core$Maybe$withDefault, 0, input.aW) + A2($elm$core$Maybe$withDefault, 0, input.aV);
 	var keycaps = A2(
 		$elm$core$Maybe$withDefault,
 		0,
@@ -5545,8 +5546,8 @@ var $author$project$Model$calculate = function (input) {
 		$elm$core$Maybe$withDefault,
 		0,
 		$author$project$Model$calculateK(input));
-	var sigmaAvg = ((keyboards + switches) + keycaps) / 3;
-	var variance = ((A2($elm$core$Basics$pow, keyboards - sigmaAvg, 2) + A2($elm$core$Basics$pow, switches - sigmaAvg, 2)) + A2($elm$core$Basics$pow, keycaps - sigmaAvg, 2)) / 3;
+	var sigmaAvg = ((keyboards + sigmaSwitches) + keycaps) / 3;
+	var variance = ((A2($elm$core$Basics$pow, keyboards - sigmaAvg, 2) + A2($elm$core$Basics$pow, sigmaSwitches - sigmaAvg, 2)) + A2($elm$core$Basics$pow, keycaps - sigmaAvg, 2)) / 3;
 	var sigma = $elm$core$Basics$sqrt(variance);
 	var accessories = A2(
 		$elm$core$Maybe$withDefault,
@@ -5554,8 +5555,8 @@ var $author$project$Model$calculate = function (input) {
 		$author$project$Model$calculateA(input));
 	var calculated = (((keyboards + switches) + keycaps) + accessories) / 3;
 	return {
-		V: A2($myrho$elm_round$Round$round, 1, calculated),
-		ag: A2($myrho$elm_round$Round$round, 1, sigma)
+		V: A2($myrho$elm_round$Round$round, 2, calculated),
+		ag: A2($myrho$elm_round$Round$round, 2, sigma)
 	};
 };
 var $elm$html$Html$span = _VirtualDom_node('span');

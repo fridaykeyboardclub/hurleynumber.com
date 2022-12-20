@@ -71,18 +71,21 @@ calculate input =
     switches = calculateS input |> withDefault 0
     keycaps = calculateC input |> withDefault 0
     accessories = calculateA input |> withDefault 0
-    sigmaAvg = (keyboards + switches + keycaps) / 3
+
+    -- Switch modification is not counted for sigma
+    sigmaSwitches = toFloat ((input.switchSets |> withDefault 0) + (input.switchGbs |> withDefault 0))
+    sigmaAvg = (keyboards + sigmaSwitches + keycaps) / 3
     variance =
       ((keyboards - sigmaAvg) ^ 2
-      + (switches - sigmaAvg) ^ 2
+      + (sigmaSwitches - sigmaAvg) ^ 2
       + (keycaps - sigmaAvg) ^ 2
       ) / 3
     sigma = sqrt variance
 
     calculated = (keyboards + switches + keycaps + accessories) / 3
   in
-    { number = calculated |> Round.round 1
-    , sigma = sigma |> Round.round 1
+    { number = calculated |> Round.round 2
+    , sigma = sigma |> Round.round 2
     }
 
 calculateK input =
