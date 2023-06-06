@@ -43,11 +43,17 @@ formula model =
         , div [ id "formula-result-part", class "formula-part" ]
           [ text ("= " ++ calculated.number) ]
         ]
-      , div [ id "sigma"]
-        [ span [ class "has-tooltip-multiline", attribute "data-tooltip" tooltip_sigma ]
-          [ text "σ" ]
-        , text "\u{00A0}= "
-        , text calculated.sigma
+      , div [ id "sigma-core"]
+        [ div []
+          [ span [ class "has-tooltip-multiline", attribute "data-tooltip" tooltip_sigma ] [ text "σ" ]
+          , text "\u{00A0}=\u{00A0}"
+          , text calculated.sigma
+          ]
+        , div []
+          [ span [ class "has-tooltip-multiline", attribute "data-tooltip" tooltip_core_index ] [ text "HCI" ]
+          , text "\u{00A0}=\u{00A0}"
+          , text calculated.coreIndex
+          ]
         ]
       ]
 
@@ -105,6 +111,8 @@ inputFields =
           , inputField "Novelty kit group buys" tooltip_novelties_gbs setNoveltyKitsGbs
           , inputField "Other accessories" tooltip_accessories setAccessories
           , inputField "Other accessory group buys" tooltip_accessory_gbs setAccessoryGbs
+          , inputField "Merchandise" tooltip_merch setMerch
+          , inputField "Merchandise group buys" tooltip_merch_gbs setMerchGbs
           ]
         ]
       ]

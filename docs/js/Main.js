@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.J.z === region.O.z)
+	if (region.J.z === region.P.z)
 	{
 		return 'on line ' + region.J.z;
 	}
-	return 'on lines ' + region.J.z + ' through ' + region.O.z;
+	return 'on lines ' + region.J.z + ' through ' + region.P.z;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aF,
-		impl.aY,
-		impl.aU,
+		impl.aG,
+		impl.a$,
+		impl.aX,
 		function() { return function() {} }
 	);
 });
@@ -3928,11 +3928,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aF,
-		impl.aY,
-		impl.aU,
+		impl.aG,
+		impl.a$,
+		impl.aX,
 		function(sendToApp, initialModel) {
-			var view = impl.aZ;
+			var view = impl.a0;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3964,12 +3964,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aF,
-		impl.aY,
-		impl.aU,
+		impl.aG,
+		impl.a$,
+		impl.aX,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.I && impl.I(sendToApp)
-			var view = impl.aZ;
+			var view = impl.a0;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3977,12 +3977,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.at);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.au);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aX) && (_VirtualDom_doc.title = title = doc.aX);
+				(title !== doc.a_) && (_VirtualDom_doc.title = title = doc.a_);
 			});
 		}
 	);
@@ -4038,8 +4038,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aQ;
-	var onUrlRequest = impl.aR;
+	var onUrlChange = impl.aT;
+	var onUrlRequest = impl.aU;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4059,9 +4059,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ab === next.ab
-							&& curr.S === next.S
-							&& curr.Z.a === next.Z.a
+							&& curr.ac === next.ac
+							&& curr.T === next.T
+							&& curr._.a === next._.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aF: function(flags)
+		aG: function(flags)
 		{
-			return A3(impl.aF, flags, _Browser_getUrl(), key);
+			return A3(impl.aG, flags, _Browser_getUrl(), key);
 		},
-		aZ: impl.aZ,
-		aY: impl.aY,
-		aU: impl.aU
+		a0: impl.a0,
+		a$: impl.a$,
+		aX: impl.aX
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aD: 'hidden', aw: 'visibilitychange' }
+		? { aE: 'hidden', ax: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aD: 'mozHidden', aw: 'mozvisibilitychange' }
+		? { aE: 'mozHidden', ax: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aD: 'msHidden', aw: 'msvisibilitychange' }
+		? { aE: 'msHidden', ax: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aD: 'webkitHidden', aw: 'webkitvisibilitychange' }
-		: { aD: 'hidden', aw: 'visibilitychange' };
+		? { aE: 'webkitHidden', ax: 'webkitvisibilitychange' }
+		: { aE: 'hidden', ax: 'visibilitychange' };
 }
 
 
@@ -4232,12 +4232,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		af: _Browser_getScene(),
-		aj: {
-			al: _Browser_window.pageXOffset,
-			am: _Browser_window.pageYOffset,
-			ak: _Browser_doc.documentElement.clientWidth,
-			R: _Browser_doc.documentElement.clientHeight
+		ag: _Browser_getScene(),
+		ak: {
+			am: _Browser_window.pageXOffset,
+			an: _Browser_window.pageYOffset,
+			al: _Browser_doc.documentElement.clientWidth,
+			S: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4247,8 +4247,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		ak: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		R: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		al: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		S: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4271,15 +4271,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			af: {
-				ak: node.scrollWidth,
-				R: node.scrollHeight
+			ag: {
+				al: node.scrollWidth,
+				S: node.scrollHeight
 			},
-			aj: {
-				al: node.scrollLeft,
-				am: node.scrollTop,
-				ak: node.clientWidth,
-				R: node.clientHeight
+			ak: {
+				am: node.scrollLeft,
+				an: node.scrollTop,
+				al: node.clientWidth,
+				S: node.clientHeight
 			}
 		};
 	});
@@ -4309,18 +4309,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			af: _Browser_getScene(),
-			aj: {
-				al: x,
-				am: y,
-				ak: _Browser_doc.documentElement.clientWidth,
-				R: _Browser_doc.documentElement.clientHeight
+			ag: _Browser_getScene(),
+			ak: {
+				am: x,
+				an: y,
+				al: _Browser_doc.documentElement.clientWidth,
+				S: _Browser_doc.documentElement.clientHeight
 			},
-			aB: {
-				al: x + rect.left,
-				am: y + rect.top,
-				ak: rect.width,
-				R: rect.height
+			aC: {
+				am: x + rect.left,
+				an: y + rect.top,
+				al: rect.width,
+				S: rect.height
 			}
 		};
 	});
@@ -4900,7 +4900,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {Q: fragment, S: host, X: path, Z: port_, ab: protocol, ac: query};
+		return {R: fragment, T: host, Y: path, _: port_, ac: protocol, ad: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5183,7 +5183,7 @@ var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	var model = {
-		E: {ao: $elm$core$Maybe$Nothing, ap: $elm$core$Maybe$Nothing, ar: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, au: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, ax: $elm$core$Maybe$Nothing, ay: $elm$core$Maybe$Nothing, az: $elm$core$Maybe$Nothing, aG: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aK: $elm$core$Maybe$Nothing, aL: $elm$core$Maybe$Nothing, aM: $elm$core$Maybe$Nothing, aO: $elm$core$Maybe$Nothing, aP: $elm$core$Maybe$Nothing, aV: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing}
+		E: {ap: $elm$core$Maybe$Nothing, aq: $elm$core$Maybe$Nothing, as: $elm$core$Maybe$Nothing, at: $elm$core$Maybe$Nothing, av: $elm$core$Maybe$Nothing, aw: $elm$core$Maybe$Nothing, ay: $elm$core$Maybe$Nothing, az: $elm$core$Maybe$Nothing, aA: $elm$core$Maybe$Nothing, aH: $elm$core$Maybe$Nothing, aI: $elm$core$Maybe$Nothing, aJ: $elm$core$Maybe$Nothing, aK: $elm$core$Maybe$Nothing, aL: $elm$core$Maybe$Nothing, aM: $elm$core$Maybe$Nothing, aN: $elm$core$Maybe$Nothing, aO: $elm$core$Maybe$Nothing, aP: $elm$core$Maybe$Nothing, aR: $elm$core$Maybe$Nothing, aS: $elm$core$Maybe$Nothing, aY: $elm$core$Maybe$Nothing, aZ: $elm$core$Maybe$Nothing}
 	};
 	return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 };
@@ -5230,42 +5230,42 @@ var $author$project$Model$orZero = function (maybe) {
 	return A2($elm$core$Maybe$withDefault, 0, maybe);
 };
 var $author$project$Model$calculateA = function (input) {
-	if (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ar, $elm$core$Maybe$Nothing) && (_Utils_eq(input.az, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ay, $elm$core$Maybe$Nothing) && (_Utils_eq(input.av, $elm$core$Maybe$Nothing) && (_Utils_eq(input.au, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ao, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aO, $elm$core$Maybe$Nothing) && _Utils_eq(input.aP, $elm$core$Maybe$Nothing)))))))))) {
+	if (_Utils_eq(input.at, $elm$core$Maybe$Nothing) && (_Utils_eq(input.as, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aA, $elm$core$Maybe$Nothing) && (_Utils_eq(input.az, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aw, $elm$core$Maybe$Nothing) && (_Utils_eq(input.av, $elm$core$Maybe$Nothing) && (_Utils_eq(input.ap, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aq, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aR, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aS, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aN, $elm$core$Maybe$Nothing) && _Utils_eq(input.aO, $elm$core$Maybe$Nothing)))))))))))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var g_a = ((($author$project$Model$orZero(input.ar) + $author$project$Model$orZero(input.ay)) + $author$project$Model$orZero(input.au)) + $author$project$Model$orZero(input.ap)) + $author$project$Model$orZero(input.aP);
-		var a = ((($author$project$Model$orZero(input.as) + $author$project$Model$orZero(input.az)) + $author$project$Model$orZero(input.av)) + $author$project$Model$orZero(input.ao)) + $author$project$Model$orZero(input.aO);
+		var g_a = (((($author$project$Model$orZero(input.as) + $author$project$Model$orZero(input.az)) + $author$project$Model$orZero(input.av)) + $author$project$Model$orZero(input.aq)) + $author$project$Model$orZero(input.aS)) + $author$project$Model$orZero(input.aO);
+		var a = (((($author$project$Model$orZero(input.at) + $author$project$Model$orZero(input.aA)) + $author$project$Model$orZero(input.aw)) + $author$project$Model$orZero(input.ap)) + $author$project$Model$orZero(input.aR)) + $author$project$Model$orZero(input.aN);
 		return $elm$core$Maybe$Just((a + g_a) / 4);
 	}
 };
 var $author$project$Model$calculateC = function (input) {
-	if (_Utils_eq(input.aJ, $elm$core$Maybe$Nothing) && _Utils_eq(input.aI, $elm$core$Maybe$Nothing)) {
+	if (_Utils_eq(input.aK, $elm$core$Maybe$Nothing) && _Utils_eq(input.aJ, $elm$core$Maybe$Nothing)) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var g_c = $author$project$Model$orZero(input.aI);
-		var c = $author$project$Model$orZero(input.aJ);
+		var g_c = $author$project$Model$orZero(input.aJ);
+		var c = $author$project$Model$orZero(input.aK);
 		return $elm$core$Maybe$Just(c + g_c);
 	}
 };
 var $author$project$Model$calculateK = function (input) {
-	if (_Utils_eq(input.aH, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aG, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aL, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aK, $elm$core$Maybe$Nothing) && _Utils_eq(input.ax, $elm$core$Maybe$Nothing))))) {
+	if (_Utils_eq(input.aI, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aH, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aM, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aL, $elm$core$Maybe$Nothing) && _Utils_eq(input.ay, $elm$core$Maybe$Nothing))))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var k_m = $author$project$Model$orZero(input.aL);
-		var k_i = $author$project$Model$orZero(input.aH);
-		var k_d = $author$project$Model$orZero(input.ax);
-		var g_m = $author$project$Model$orZero(input.aK);
-		var g_k = $author$project$Model$orZero(input.aG);
+		var k_m = $author$project$Model$orZero(input.aM);
+		var k_i = $author$project$Model$orZero(input.aI);
+		var k_d = $author$project$Model$orZero(input.ay);
+		var g_m = $author$project$Model$orZero(input.aL);
+		var g_k = $author$project$Model$orZero(input.aH);
 		return $elm$core$Maybe$Just((((k_i + g_k) + k_m) + g_m) + (k_d / 2));
 	}
 };
 var $author$project$Model$calculateS = function (input) {
-	if (_Utils_eq(input.aW, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aM, $elm$core$Maybe$Nothing) && _Utils_eq(input.aV, $elm$core$Maybe$Nothing))) {
+	if (_Utils_eq(input.aZ, $elm$core$Maybe$Nothing) && (_Utils_eq(input.aP, $elm$core$Maybe$Nothing) && _Utils_eq(input.aY, $elm$core$Maybe$Nothing))) {
 		return $elm$core$Maybe$Nothing;
 	} else {
-		var s_u = $author$project$Model$orZero(input.aW);
-		var s_c = $author$project$Model$orZero(input.aM);
-		var g_s = $author$project$Model$orZero(input.aV);
+		var s_u = $author$project$Model$orZero(input.aZ);
+		var s_c = $author$project$Model$orZero(input.aP);
+		var g_s = $author$project$Model$orZero(input.aY);
 		return $elm$core$Maybe$Just((s_u + (0.5 * s_c)) + g_s);
 	}
 };
@@ -5537,7 +5537,6 @@ var $author$project$Model$calculate = function (input) {
 		$elm$core$Maybe$withDefault,
 		0,
 		$author$project$Model$calculateS(input));
-	var sigmaSwitches = A2($elm$core$Maybe$withDefault, 0, input.aW) + A2($elm$core$Maybe$withDefault, 0, input.aV);
 	var keycaps = A2(
 		$elm$core$Maybe$withDefault,
 		0,
@@ -5546,17 +5545,21 @@ var $author$project$Model$calculate = function (input) {
 		$elm$core$Maybe$withDefault,
 		0,
 		$author$project$Model$calculateK(input));
-	var sigmaAvg = ((keyboards + sigmaSwitches) + keycaps) / 3;
-	var variance = ((A2($elm$core$Basics$pow, keyboards - sigmaAvg, 2) + A2($elm$core$Basics$pow, sigmaSwitches - sigmaAvg, 2)) + A2($elm$core$Basics$pow, keycaps - sigmaAvg, 2)) / 3;
+	var coreSwitches = A2($elm$core$Maybe$withDefault, 0, input.aZ) + A2($elm$core$Maybe$withDefault, 0, input.aY);
+	var sigmaAvg = ((keyboards + coreSwitches) + keycaps) / 3;
+	var variance = ((A2($elm$core$Basics$pow, keyboards - sigmaAvg, 2) + A2($elm$core$Basics$pow, coreSwitches - sigmaAvg, 2)) + A2($elm$core$Basics$pow, keycaps - sigmaAvg, 2)) / 3;
 	var sigma = $elm$core$Basics$sqrt(variance);
+	var coreKeyboards = ((A2($elm$core$Maybe$withDefault, 0, input.aI) + A2($elm$core$Maybe$withDefault, 0, input.aH)) + A2($elm$core$Maybe$withDefault, 0, input.aM)) + A2($elm$core$Maybe$withDefault, 0, input.aL);
+	var coreIndex = ((coreKeyboards + coreSwitches) + keycaps) / 3;
 	var accessories = A2(
 		$elm$core$Maybe$withDefault,
 		0,
 		$author$project$Model$calculateA(input));
 	var calculated = (((keyboards + switches) + keycaps) + accessories) / 3;
 	return {
-		V: A2($myrho$elm_round$Round$round, 2, calculated),
-		ag: A2($myrho$elm_round$Round$round, 2, sigma)
+		N: A2($myrho$elm_round$Round$round, 2, coreIndex),
+		W: A2($myrho$elm_round$Round$round, 2, calculated),
+		ah: A2($myrho$elm_round$Round$round, 2, sigma)
 	};
 };
 var $elm$html$Html$span = _VirtualDom_node('span');
@@ -5591,6 +5594,7 @@ var $elm$html$Html$Attributes$src = function (url) {
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
+var $author$project$Messages$tooltip_core_index = 'The \"Hurley Core Index\", a reduced Hurley number that includes only your keyboards (real or theoretical), without bonuses for switch modification or designing your own boards, and without accessories';
 var $author$project$Messages$tooltip_sigma = 'The \"Hurley Sigma\", the standard deviation of the keyboards, switches and keycaps components; a measure of how \"unbalanced\" your collection is';
 var $author$project$View$formula = function (model) {
 	var calculated = $author$project$Model$calculate(model.E);
@@ -5691,30 +5695,55 @@ var $author$project$View$formula = function (model) {
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('= ' + calculated.V)
+								$elm$html$Html$text('= ' + calculated.W)
 							]))
 					])),
 				A2(
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$id('sigma')
+						$elm$html$Html$Attributes$id('sigma-core')
 					]),
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$span,
+						$elm$html$Html$div,
+						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('has-tooltip-multiline'),
-								A2($elm$html$Html$Attributes$attribute, 'data-tooltip', $author$project$Messages$tooltip_sigma)
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('σ')
+								A2(
+								$elm$html$Html$span,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('has-tooltip-multiline'),
+										A2($elm$html$Html$Attributes$attribute, 'data-tooltip', $author$project$Messages$tooltip_sigma)
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('σ')
+									])),
+								$elm$html$Html$text('\u00A0=\u00A0'),
+								$elm$html$Html$text(calculated.ah)
 							])),
-						$elm$html$Html$text('\u00A0= '),
-						$elm$html$Html$text(calculated.ag)
+						A2(
+						$elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$span,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('has-tooltip-multiline'),
+										A2($elm$html$Html$Attributes$attribute, 'data-tooltip', $author$project$Messages$tooltip_core_index)
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('HCI')
+									])),
+								$elm$html$Html$text('\u00A0=\u00A0'),
+								$elm$html$Html$text(calculated.N)
+							]))
 					]))
 			]));
 };
@@ -5819,121 +5848,133 @@ var $author$project$Model$setAccessories = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{ao: a});
+			{ap: a});
 	});
 var $author$project$Model$setAccessoryGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{ap: a});
+			{aq: a});
 	});
 var $author$project$Model$setArtisanGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{ar: a});
+			{as: a});
 	});
 var $author$project$Model$setArtisans = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{as: a});
+			{at: a});
 	});
 var $author$project$Model$setCableGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{au: a});
+			{av: a});
 	});
 var $author$project$Model$setCables = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{av: a});
+			{aw: a});
 	});
 var $author$project$Model$setDesigned = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{ax: a});
+			{ay: a});
 	});
 var $author$project$Model$setDeskpadGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{ay: a});
+			{az: a});
 	});
 var $author$project$Model$setDeskpads = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{az: a});
+			{aA: a});
 	});
 var $author$project$Model$setKeyboardGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aG: a});
+			{aH: a});
 	});
 var $author$project$Model$setKeyboards = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aH: a});
+			{aI: a});
 	});
 var $author$project$Model$setKeycapGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aI: a});
+			{aJ: a});
 	});
 var $author$project$Model$setKeycapSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aJ: a});
+			{aK: a});
 	});
 var $author$project$Model$setMacropadGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aK: a});
+			{aL: a});
 	});
 var $author$project$Model$setMacropads = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aL: a});
+			{aM: a});
 	});
-var $author$project$Model$setModifiedSwitchSets = F2(
+var $author$project$Model$setMerch = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aM: a});
+			{aN: a});
 	});
-var $author$project$Model$setNoveltyKits = F2(
+var $author$project$Model$setMerchGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aO: a});
 	});
-var $author$project$Model$setNoveltyKitsGbs = F2(
+var $author$project$Model$setModifiedSwitchSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
 			{aP: a});
 	});
+var $author$project$Model$setNoveltyKits = F2(
+	function (a, model) {
+		return _Utils_update(
+			model,
+			{aR: a});
+	});
+var $author$project$Model$setNoveltyKitsGbs = F2(
+	function (a, model) {
+		return _Utils_update(
+			model,
+			{aS: a});
+	});
 var $author$project$Model$setSwitchGbs = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aV: a});
+			{aY: a});
 	});
 var $author$project$Model$setSwitchSets = F2(
 	function (a, model) {
 		return _Utils_update(
 			model,
-			{aW: a});
+			{aZ: a});
 	});
 var $elm$html$Html$table = _VirtualDom_node('table');
 var $author$project$Messages$tooltip_accessories = 'Total number of other keyboard accessories you own such as stand-alone or spare PCBs, alternate plates, switch testers, etc.';
@@ -5951,6 +5992,8 @@ var $author$project$Messages$tooltip_keycap_gbs = 'Total number of sets of keyca
 var $author$project$Messages$tooltip_keycaps = 'Total number of keycaps sets you own. If you have multiple kits for the same set they are all counted as one set unless they can be used to fully kit multiple boards in which case they are counted as a number of sets equal to the number of boards they can fully kit simultaneously. Artisan Keycaps are counted as Accessories';
 var $author$project$Messages$tooltip_macropad_gbs = 'Total number of macropads you currently have on order but have not yet received.';
 var $author$project$Messages$tooltip_macropads = 'Total number of macropads you own';
+var $author$project$Messages$tooltip_merch = 'Number of items of keyboard merchandise (eg, clothing) you own';
+var $author$project$Messages$tooltip_merch_gbs = 'Number of items of keyboard merchandise you have on order but have not yet received';
 var $author$project$Messages$tooltip_modified_switches = 'Total number of customized sets of switches that have been modified by you. Modified switch sets include those that you have lubed, filmed, or made other similar modifications to. Clipping switch pins does not count as a modification. If you make Frankenswitches (where you take components from one set of switches and use them to replace the components of another set of switches) both sets are considered modified if both sets have been reassembled. Each set of modified switches is counted as a single set regardless of the number of modifications made.';
 var $author$project$Messages$tooltip_novelties = 'Number of novelty kits you have';
 var $author$project$Messages$tooltip_novelties_gbs = 'Number of novelty kits you have on order but have not yet received';
@@ -6095,7 +6138,9 @@ var $author$project$View$inputFields = A2(
 									A3($author$project$View$inputField, 'Novelty kits', $author$project$Messages$tooltip_novelties, $author$project$Model$setNoveltyKits),
 									A3($author$project$View$inputField, 'Novelty kit group buys', $author$project$Messages$tooltip_novelties_gbs, $author$project$Model$setNoveltyKitsGbs),
 									A3($author$project$View$inputField, 'Other accessories', $author$project$Messages$tooltip_accessories, $author$project$Model$setAccessories),
-									A3($author$project$View$inputField, 'Other accessory group buys', $author$project$Messages$tooltip_accessory_gbs, $author$project$Model$setAccessoryGbs)
+									A3($author$project$View$inputField, 'Other accessory group buys', $author$project$Messages$tooltip_accessory_gbs, $author$project$Model$setAccessoryGbs),
+									A3($author$project$View$inputField, 'Merchandise', $author$project$Messages$tooltip_merch, $author$project$Model$setMerch),
+									A3($author$project$View$inputField, 'Merchandise group buys', $author$project$Messages$tooltip_merch_gbs, $author$project$Model$setMerchGbs)
 								]))
 						]))
 				]))
@@ -6115,10 +6160,10 @@ var $author$project$View$view = function (model) {
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
-		aF: $author$project$Main$init,
-		aU: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		aY: $author$project$Main$update,
-		aZ: $author$project$View$view
+		aG: $author$project$Main$init,
+		aX: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		a$: $author$project$Main$update,
+		a0: $author$project$View$view
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(

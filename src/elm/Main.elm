@@ -34,6 +34,8 @@ init _ =
         , cableGbs = Nothing
         , accessories = Nothing
         , accessoryGbs = Nothing
+        , merch = Nothing
+        , merchGbs = Nothing
         }
       }
   in

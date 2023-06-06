@@ -28,12 +28,15 @@ type alias HurleyInput =
   , cableGbs : Maybe Int
   , accessories : Maybe Int
   , accessoryGbs : Maybe Int
+  , merch : Maybe Int
+  , merchGbs : Maybe Int
   -- TODO other input fields
   }
 
 type alias HurleyOutput =
   { number : String
   , sigma : String
+  , coreIndex : String
   }
 
 type Event
@@ -61,6 +64,8 @@ setCables a model = { model | cables = a }
 setCableGbs a model = { model | cableGbs = a }
 setAccessories a model = { model | accessories = a }
 setAccessoryGbs a model = { model | accessoryGbs = a }
+setMerch a model = { model | merch = a }
+setMerchGbs a model = { model | merchGbs = a }
 
 -- Calculate the Hurley number from user input
 
@@ -72,20 +77,35 @@ calculate input =
     keycaps = calculateC input |> withDefault 0
     accessories = calculateA input |> withDefault 0
 
-    -- Switch modification is not counted for sigma
-    sigmaSwitches = toFloat ((input.switchSets |> withDefault 0) + (input.switchGbs |> withDefault 0))
-    sigmaAvg = (keyboards + sigmaSwitches + keycaps) / 3
+    -- Bonuses for switch modification and designed keyboards do not count for the core index or sigma
+    coreSwitches =
+      ((input.switchSets |> withDefault 0)
+      + (input.switchGbs |> withDefault 0)
+      ) |> toFloat
+    coreKeyboards =
+      ((input.keyboards |> withDefault 0)
+      + (input.keyboardGbs |> withDefault 0)
+      + (input.macropads |> withDefault 0)
+      + (input.macropadGbs |> withDefault 0)
+      ) |> toFloat
+
+    -- Sigma calculation
+    sigmaAvg = (keyboards + coreSwitches + keycaps) / 3
     variance =
       ((keyboards - sigmaAvg) ^ 2
-      + (sigmaSwitches - sigmaAvg) ^ 2
+      + (coreSwitches - sigmaAvg) ^ 2
       + (keycaps - sigmaAvg) ^ 2
       ) / 3
     sigma = sqrt variance
+
+    --
+    coreIndex = (coreKeyboards + coreSwitches + keycaps) / 3
 
     calculated = (keyboards + switches + keycaps + accessories) / 3
   in
     { number = calculated |> Round.round 2
     , sigma = sigma |> Round.round 2
+    , coreIndex = coreIndex |> Round.round 2
     }
 
 calculateK input =
@@ -128,12 +148,13 @@ calculateA input =
     && input.deskpads == Nothing && input.deskpadGbs == Nothing
     && input.cables == Nothing && input.cableGbs == Nothing
     && input.accessories == Nothing && input.accessoryGbs == Nothing
-    && input.noveltyKits == Nothing && input.noveltyKitsGbs == Nothing then
+    && input.noveltyKits == Nothing && input.noveltyKitsGbs == Nothing
+    && input.merch == Nothing && input.merchGbs == Nothing then
     Nothing
   else
     let
-      a = orZero input.artisans + orZero input.deskpads + orZero input.cables + orZero input.accessories + orZero input.noveltyKits
-      g_a = orZero input.artisanGbs + orZero input.deskpadGbs + orZero input.cableGbs + orZero input.accessoryGbs + orZero input.noveltyKitsGbs
+      a = orZero input.artisans + orZero input.deskpads + orZero input.cables + orZero input.accessories + orZero input.noveltyKits + orZero input.merch
+      g_a = orZero input.artisanGbs + orZero input.deskpadGbs + orZero input.cableGbs + orZero input.accessoryGbs + orZero input.noveltyKitsGbs + orZero input.merchGbs
     in Just ((a + g_a) / 4)
 
 orZero maybe = maybe |> withDefault 0 |> toFloat
